@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://qkrig4yyadqa"]
+
+[node name="FreezingPlatform" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 80.0
+offset_bottom = 350.0
+
+[node name="Position1" type="Marker2D" parent="."]
+position = Vector2(40, 25)
+
+[node name="Position2" type="Marker2D" parent="."]
+position = Vector2(40, 75)
+
+[node name="Position3" type="Marker2D" parent="."]
+position = Vector2(40, 125)
+
+[node name="Position4" type="Marker2D" parent="."]
+position = Vector2(40, 175)
+
+[node name="Position5" type="Marker2D" parent="."]
+position = Vector2(40, 225)
+
+[node name="Position6" type="Marker2D" parent="."]
+position = Vector2(40, 275)
+
+[node name="Position7" type="Marker2D" parent="."]
+position = Vector2(40, 325)

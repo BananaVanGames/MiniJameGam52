@@ -11,5 +11,23 @@ config_version=5
 [application]
 
 config/name="minijamegam52"
+config/tags=PackedStringArray("gamejam", "github", "group")
+run/main_scene="uid://6n3h48sf0yhd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://ui/main_menu/default_bus_layout.tres"
+
+[autoload]
+
+SettingsManager="*res://autoloads/settings_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simple_gdscript_formatter/plugin.cfg")
