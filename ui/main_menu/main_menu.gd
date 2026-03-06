@@ -20,6 +20,9 @@ var time: float = 0.0
 @onready var scoreboard: Button = $Menu/Control2/Scoreboard
 @onready var settings: Button = $Menu/Control3/Settings
 @onready var quit: Button = $Menu/Control4/Quit
+@onready var video: Button = $Settings/Control/Video
+@onready var audio: Button = $Settings/Control2/Audio
+@onready var back: Button = $Back
 
 
 func _ready():
@@ -37,11 +40,17 @@ func _ready():
 	scoreboard.mouse_entered.connect(_on_any_button_mouse_entered.bind(scoreboard))
 	settings.mouse_entered.connect(_on_any_button_mouse_entered.bind(settings))
 	quit.mouse_entered.connect(_on_any_button_mouse_entered.bind(quit))
+	video.mouse_entered.connect(_on_any_button_mouse_entered.bind(video))
+	audio.mouse_entered.connect(_on_any_button_mouse_entered.bind(audio))
+	back.mouse_entered.connect(_on_any_button_mouse_entered.bind(back))
 
 	start.mouse_exited.connect(_on_any_button_mouse_exited.bind(start))
 	scoreboard.mouse_exited.connect(_on_any_button_mouse_exited.bind(scoreboard))
 	settings.mouse_exited.connect(_on_any_button_mouse_exited.bind(settings))
 	quit.mouse_exited.connect(_on_any_button_mouse_exited.bind(quit))
+	video.mouse_exited.connect(_on_any_button_mouse_exited.bind(video))
+	audio.mouse_exited.connect(_on_any_button_mouse_exited.bind(audio))
+	back.mouse_exited.connect(_on_any_button_mouse_exited.bind(back))
 
 
 func _process(delta: float) -> void:
@@ -51,6 +60,12 @@ func _process(delta: float) -> void:
 		hovered_button.scale = Vector2(pulse, pulse)
 	else:
 		time = 0.0
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Esc"):
+		if _on_back_pressed():
+			_on_quit_pressed()
 
 
 func _on_any_button_mouse_entered(button) -> void:
@@ -63,15 +78,15 @@ func _on_any_button_mouse_exited(button) -> void:
 		hovered_button = null
 
 
-func _show_panel(panel: Control):
+func _show_panel(panel: Control) -> void:
 	panel.visible = true
 
 
-func _update_back_button():
+func _update_back_button() -> void:
 	back_button.visible = nav_stack.size() > 0
 
 
-func _navigate_to(panel: Control):
+func _navigate_to(panel: Control) -> void:
 	if current_panel:
 		nav_stack.append(current_panel)
 		current_panel.visible = false
@@ -81,17 +96,18 @@ func _navigate_to(panel: Control):
 	_update_back_button()
 
 
-func _on_back_pressed():
+func _on_back_pressed() -> bool:
 	if nav_stack.is_empty():
-		return
+		return true
 
 	current_panel.visible = false
 	current_panel = nav_stack.pop_back()
 	_show_panel(current_panel)
 	_update_back_button()
+	return false
 
 
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 

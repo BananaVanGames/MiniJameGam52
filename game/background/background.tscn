@@ -9,7 +9,7 @@ shader_parameter/noise_texture = ExtResource("2_uc1g5")
 shader_parameter/noise_strength = 0.25
 shader_parameter/noise_scale = 0.5
 
-[node name="Control" type="Control"]
+[node name="BeachShaderTest" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 15
