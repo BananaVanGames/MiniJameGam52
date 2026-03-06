@@ -33,3 +33,7 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/simple_gdscript_formatter/plugin.cfg")
+
+[global_group]
+
+penguins=""
