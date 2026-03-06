@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0vvklnvontax"]
+
+[ext_resource type="Script" uid="uid://b6ntkfq5q6abf" path="res://game/penguin_spawner.gd" id="1_7gx6t"]
+
+[node name="PenguinSpawner" type="Marker2D"]
+script = ExtResource("1_7gx6t")

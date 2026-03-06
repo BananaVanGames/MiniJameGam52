@@ -93,3 +93,7 @@ func _on_back_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_start_pressed() -> void:
+	SceneLoader.load_scene("uid://d1gglgt76yt1s")
