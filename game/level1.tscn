@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1gglgt76yt1s"]
 
-[ext_resource type="PackedScene" uid="uid://c0vvklnvontax" path="res://game/penguin_spawner.tscn" id="1_s6k5d"]
-[ext_resource type="PackedScene" uid="uid://d0qmhsecy1gnq" path="res://penguin/penguin.tscn" id="2_sgg2w"]
+[ext_resource type="PackedScene" uid="uid://c0vvklnvontax" path="res://game/penguin_spawner/penguin_spawner.tscn" id="1_s6k5d"]
+[ext_resource type="PackedScene" uid="uid://d0qmhsecy1gnq" path="res://game/penguin/penguin.tscn" id="2_sgg2w"]
 
 [node name="Level1" type="Node2D"]
 

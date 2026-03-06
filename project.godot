@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/simple_gdscript_formatter/plugin.cfg")
 [global_group]
 
 penguins=""
+
 [input]
 
 Esc={
