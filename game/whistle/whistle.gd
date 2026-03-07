@@ -6,6 +6,7 @@ const WHISTLE_3 = preload("uid://obcflc0rqhme")
 const WHISTLE_SOUNDS = [WHISTLE_1, WHISTLE_2, WHISTLE_3]
 
 @export var global_time: float = 10
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var timer: Timer = $Timer
@@ -13,6 +14,7 @@ const WHISTLE_SOUNDS = [WHISTLE_1, WHISTLE_2, WHISTLE_3]
 
 func _ready() -> void:
 	timer.wait_time = global_time
+	GameHandler.whistle_blown.connect(on_player_activate_whistle)
 
 
 func blow_whistle() -> void:
@@ -22,13 +24,13 @@ func blow_whistle() -> void:
 	animation_player.stop()
 	animation_player.play("blow")
 
-	GameHandler.whistle_blown.emit()
 
-
-func player_activate_whistle() -> void:
+func on_player_activate_whistle() -> void:
 	blow_whistle()
 	timer.stop()
+	timer.start(global_time)
 
 
 func _on_timer_timeout() -> void:
 	blow_whistle()
+	GameHandler.freeze_penguins()

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bghw6kvc2aveg"]
+
+[ext_resource type="PackedScene" uid="uid://qkrig4yyadqa" path="res://game/freezing_platform/freezing_platform.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background.tscn" id="2_feb5d"]
+
+[sub_resource type="GDScript" id="GDScript_e2o6t"]
+script/source = "extends Node2D
+
+var counter: float = 0
+
+
+func _ready():
+	print(\"VIEWPORT SIZE: \", get_viewport_rect().size)
+
+
+func spawn_penguin() -> void:
+	print(\"SPAWNING PENGUIN AT: \", get_random_position_off_screen())
+
+
+#REVISA 
+func get_random_position_off_screen():
+	var randx
+	var randy
+	var distance_outside_screen := 100
+	var screensize
+
+	# Globals.camera doesn't exist when testing scene
+
+	screensize = get_viewport_rect().size
+
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+
+	if rng.randi() % 2 == 0:
+		# spawn at top or bottom
+		randx = int(rng.randi_range(0, screensize.x))
+		randy = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.y + distance_outside_screen
+	else:
+		# spawn at left or right
+		randy = int(rng.randi_range(0, screensize.y))
+		randx = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.x + distance_outside_screen
+
+	return Vector2(randx, randy)
+
+
+func _on_spawn_timer_timeout() -> void:
+	spawn_penguin()
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource("GDScript_e2o6t")
+
+[node name="Control" parent="." instance=ExtResource("2_feb5d")]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="FreezingPlatform" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(68, 160)
+
+[node name="Penguins" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

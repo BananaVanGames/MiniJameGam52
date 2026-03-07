@@ -1,24 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://6n3h48sf0yhd"]
+[gd_scene load_steps=8 format=3 uid="uid://6n3h48sf0yhd"]
 
 [ext_resource type="Script" uid="uid://c1ok4ygfchn4w" path="res://ui/main_menu/main_menu.gd" id="1_3shxk"]
+[ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_u184e"]
 [ext_resource type="Script" uid="uid://dktk5ci43anul" path="res://ui/main_menu/video.gd" id="2_bws42"]
 [ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background.tscn" id="2_i5wg5"]
 [ext_resource type="Script" uid="uid://ct4a0i2q4fuy3" path="res://ui/main_menu/audio.gd" id="3_3f7m4"]
 [ext_resource type="PackedScene" uid="uid://dbdrco7jv3grm" path="res://ui/menu_penguin/menu_penguin.tscn" id="5_3c04x"]
-[ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistler/whistle.tscn" id="6_joh67"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omy8q"]
-
-[sub_resource type="Theme" id="Theme_omy8q"]
-Button/colors/font_hover_color = Color(0.9861035, 0.9341246, 7.70092e-07, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/constants/outline_size = 15
-Button/font_sizes/font_size = 25
-Button/fonts/font = null
-Button/styles/hover = SubResource("StyleBoxFlat_omy8q")
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 15
-Label/font_sizes/font_size = 25
+[ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="6_joh67"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "back_button", "scoreboard_button", "settings_button", "video_button", "audio_button")]
 layout_mode = 3
@@ -27,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_omy8q")
+theme = ExtResource("1_u184e")
 script = ExtResource("1_3shxk")
 menu = NodePath("Menu")
 main_settings = NodePath("Settings")

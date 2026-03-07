@@ -4,7 +4,6 @@ signal score_changed(new_score: int, max_score: int)
 signal whistle_blown()
 signal level_won()
 signal level_lost()
-signal auto_whistle_tick(time_remaining: float) ## for UI countdown display
 
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
@@ -13,38 +12,25 @@ var max_temperature: int = 10 ## temperature at which a penguin dies
 var min_whistle_temp: int = 2 ## acceptable temp range low  (inclusive)
 var max_whistle_temp: int = 5 ## acceptable temp range high (inclusive)
 var auto_whistle_interval: float = 15.0 ## seconds between automatic whistles
+var lost_penguins: int = 0 ## Number of penguins that were lost per level
 
 var score_points: int = 0
 var level_active: bool = false
 
-var _whistle_timer: Timer
-var _whistle_elapsed: float = 0.0
 
-
-func _ready() -> void:
-	_setup_whistle_timer()
-
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not level_active:
 		return
-	_whistle_elapsed += delta
-	var remaining := auto_whistle_interval - _whistle_elapsed
-	auto_whistle_tick.emit(maxf(remaining, 0.0))
 
 
 func start_level() -> void:
 	score_points = 0
 	level_active = true
-	_whistle_elapsed = 0.0
-	_whistle_timer.wait_time = auto_whistle_interval
-	_whistle_timer.start()
 	score_changed.emit(score_points, max_score_points)
 
 
 func stop_level() -> void:
 	level_active = false
-	_whistle_timer.stop()
 
 
 ## Load a level config dict — call before start_level()
@@ -59,14 +45,15 @@ func load_level(config: Dictionary) -> void:
 	auto_whistle_interval = config.get("auto_whistle_interval", 15.0)
 
 
-func blow_whistle() -> void:
+func player_blows_whistle() -> void:
 	if not level_active:
 		return
 
 	whistle_blown.emit()
-	_whistle_elapsed = 0.0
-	_whistle_timer.start()
+	freeze_penguins()
 
+
+func freeze_penguins() -> void:
 	var scored := 0
 	for penguin in get_tree().get_nodes_in_group("penguins"):
 		var temp: int = penguin.temperature
@@ -84,18 +71,6 @@ func trigger_loss() -> void:
 	_lose()
 
 
-func _setup_whistle_timer() -> void:
-	_whistle_timer = Timer.new()
-	_whistle_timer.one_shot = false
-	_whistle_timer.autostart = false
-	_whistle_timer.timeout.connect(_on_auto_whistle)
-	add_child(_whistle_timer)
-
-
-func _on_auto_whistle() -> void:
-	blow_whistle()
-
-
 func _add_score(amount: int) -> void:
 	score_points = mini(score_points + amount, max_score_points)
 	score_changed.emit(score_points, max_score_points)
@@ -105,11 +80,9 @@ func _add_score(amount: int) -> void:
 
 func _win() -> void:
 	level_active = false
-	_whistle_timer.stop()
 	level_won.emit()
 
 
 func _lose() -> void:
 	level_active = false
-	_whistle_timer.stop()
 	level_lost.emit()

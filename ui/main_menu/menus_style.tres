@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://caff2b1h3e3hy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omy8q"]
+
+[resource]
+Button/colors/font_hover_color = Color(0.9861035, 0.9341246, 7.70092e-07, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 15
+Button/font_sizes/font_size = 25
+Button/fonts/font = null
+Button/styles/hover = SubResource("StyleBoxFlat_omy8q")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 15
+Label/font_sizes/font_size = 25
