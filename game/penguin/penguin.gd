@@ -17,6 +17,10 @@ var _entered_screen: bool = false # true once penguin is inside viewport
 @onready var letter_label: Label = $LetterLabel
 @onready var temp_bar: ProgressBar = $TempBar
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var tecla: TextureRect = $Tecla
+@onready var tecla_presionada: TextureRect = $"Tecla-presionada"
+@onready var tecla_sonido: AudioStreamPlayer = $"Tecla-sonido"
+
 
 
 func _ready() -> void:
@@ -63,6 +67,12 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if OS.get_keycode_string(event.keycode).to_upper() == letter:
+			tecla.visible  = false
+			tecla_presionada.visible = true
+			tecla_sonido.play()
+			await get_tree().create_timer(0.12).timeout
+			tecla.visible  = true
+			tecla_presionada.visible = false
 			cool_down(1)
 
 
