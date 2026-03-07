@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5o1ycfwenuu6"
-path.s3tc="res://.godot/imported/silbato09.png-518ef48cac6db43ac150a2d2dc8a7381.s3tc.ctex"
+uid="uid://cm5q1tf5d64bj"
+path.s3tc="res://.godot/imported/silbato04.png-2b6c4a7d2f2b5bcd215a9ce835f1d0ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/whistler/art/silbato09.png"
-dest_files=["res://.godot/imported/silbato09.png-518ef48cac6db43ac150a2d2dc8a7381.s3tc.ctex"]
+source_file="res://game/whistle/art/silbato04.png"
+dest_files=["res://.godot/imported/silbato04.png-2b6c4a7d2f2b5bcd215a9ce835f1d0ff.s3tc.ctex"]
 
 [params]
 

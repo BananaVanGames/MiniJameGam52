@@ -1,28 +1,174 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0qmhsecy1gnq"]
+[gd_scene load_steps=14 format=3 uid="uid://d0qmhsecy1gnq"]
 
-[ext_resource type="Script" uid="uid://d1sfklfkpgkl4" path="res://game/penguin/penguin.gd" id="1_td14q"]
-[ext_resource type="Texture2D" uid="uid://c0yrfi6xx2pg2" path="res://icon.svg" id="2_ptw1y"]
+[ext_resource type="Script" uid="uid://dw1ri84bv1px" path="res://game/penguin/penguin.gd" id="1_wmdo7"]
+[ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="2_0cu47"]
+[ext_resource type="Texture2D" uid="uid://cod61tgvmu3n" path="res://game/penguin/art/pinwino02.png" id="3_a5ru4"]
+[ext_resource type="Texture2D" uid="uid://c2jkke6mpoup2" path="res://game/penguin/art/pinwino03.png" id="4_vu7vq"]
+[ext_resource type="Texture2D" uid="uid://xguwjawa1es" path="res://game/penguin/art/pinwino04.png" id="5_13136"]
+[ext_resource type="Texture2D" uid="uid://dah1m6bvkqsw3" path="res://game/penguin/art/pinwino05.png" id="6_iodxu"]
+[ext_resource type="Texture2D" uid="uid://ccci2hk4k2hgq" path="res://game/penguin/art/pinwino06.png" id="7_dubca"]
+[ext_resource type="Texture2D" uid="uid://b8rblaufcug0x" path="res://game/penguin/art/pinwino07.png" id="8_4ewhg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_un7j2"]
-size = Vector2(127, 124)
+[sub_resource type="SpriteFrames" id="SpriteFrames_r62jp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0cu47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0cu47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0cu47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a5ru4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a5ru4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a5ru4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vu7vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vu7vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vu7vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_13136")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_13136")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_13136")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_13136")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iodxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iodxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iodxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dubca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dubca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dubca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ewhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ewhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ewhg")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_527ww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vcecl"]
+resource_name = "walking"
+length = 0.8736
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8736),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 21]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3hdq"]
+_data = {
+&"RESET": SubResource("Animation_527ww"),
+&"walking": SubResource("Animation_vcecl")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ra44"]
 
 [node name="Penguin" type="CharacterBody2D" groups=["penguins"]]
-script = ExtResource("1_td14q")
+script = ExtResource("1_wmdo7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ptw1y")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_r62jp")
+animation = &"walking"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j3hdq")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_un7j2")
+shape = SubResource("CapsuleShape2D_2ra44")
+disabled = true
 
 [node name="DirTimer" type="Timer" parent="."]
 
+[node name="TempTimer" type="Timer" parent="."]
+
 [node name="Area2D" type="Area2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -33,7 +179,8 @@ offset_right = 42.0
 offset_bottom = 89.0
 
 [node name="TempBar" type="ProgressBar" parent="."]
-offset_left = -53.0
-offset_top = -92.0
-offset_right = 58.0
-offset_bottom = -65.0
+offset_left = -47.0
+offset_top = -95.0
+offset_right = 51.0
+offset_bottom = -68.0
+show_percentage = false

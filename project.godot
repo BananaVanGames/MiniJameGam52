@@ -25,6 +25,8 @@ buses/default_bus_layout="res://ui/main_menu/default_bus_layout.tres"
 SettingsManager="*res://autoloads/settings_manager.gd"
 MusicPlayer="*res://autoloads/music_player.gd"
 SceneLoader="*res://autoloads/scene_loader.gd"
+GameHandler="*res://autoloads/game_handler.gd"
+LevelData="*res://autoloads/level_data.gd"
 
 [display]
 
