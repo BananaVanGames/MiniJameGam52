@@ -29,6 +29,7 @@ SceneLoader="*res://autoloads/scene_loader.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://cl5eh8a4mljcw"
 
 [editor_plugins]
 

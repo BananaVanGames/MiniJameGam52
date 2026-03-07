@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0qmhsecy1gnq"]
 
-[ext_resource type="Script" uid="uid://h0gxdqu3iynh" path="res://penguin/penguin.gd" id="1_td14q"]
+[ext_resource type="Script" uid="uid://d1sfklfkpgkl4" path="res://game/penguin/penguin.gd" id="1_td14q"]
 [ext_resource type="Texture2D" uid="uid://c0yrfi6xx2pg2" path="res://icon.svg" id="2_ptw1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_un7j2"]
