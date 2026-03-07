@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [sub_resource type="Animation" id="Animation_527ww"]
