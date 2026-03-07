@@ -35,6 +35,7 @@ texture = ExtResource("1_2qg8k")
 [node name="Torch" parent="." instance=ExtResource("2_uj5s0")]
 z_index = 3
 position = Vector2(393, 511)
+rotation = -0.286234
 
 [node name="Torch2" parent="." instance=ExtResource("2_uj5s0")]
 z_index = 3
@@ -44,22 +45,39 @@ scale = Vector2(-1, 1)
 [node name="Torch3" parent="." instance=ExtResource("2_uj5s0")]
 z_index = 3
 position = Vector2(129, 500)
+rotation = -0.07853982
 
 [node name="Torch4" parent="." instance=ExtResource("2_uj5s0")]
 z_index = 3
 position = Vector2(1067, 528)
-scale = Vector2(-1, 1)
 
 [node name="Towel" type="Sprite2D" parent="."]
 position = Vector2(883, 310)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_2qg8k")
 
+[node name="Towel2" type="Sprite2D" parent="."]
+position = Vector2(173, 132)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2qg8k")
+
+[node name="Towel3" type="Sprite2D" parent="."]
+position = Vector2(187, 187)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2qg8k")
+
 [node name="Umbrela" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(807, 162)
+position = Vector2(805, 179)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_xlr7x")
+
+[node name="Umbrela2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(71, 75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xlr7x")
+flip_h = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(797, 246)

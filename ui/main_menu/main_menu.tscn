@@ -63,6 +63,7 @@ pivot_offset = Vector2(150, 36)
 text = "Start"
 
 [node name="Control2" type="Control" parent="Menu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -320,7 +321,7 @@ position = Vector2(910, 545)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Whistle" parent="CanvasLayer" instance=ExtResource("6_joh67")]
-position = Vector2(1033, 568)
+position = Vector2(1056, 541)
 
 [connection signal="pressed" from="Menu/Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Control2/Scoreboard" to="." method="_on_scoreboard_pressed"]

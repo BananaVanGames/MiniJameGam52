@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bj6dlil3lm38y"]
+[gd_scene load_steps=18 format=3 uid="uid://bj6dlil3lm38y"]
 
 [ext_resource type="Script" uid="uid://cw4pcm5yerfjc" path="res://game/whistle/whistle.gd" id="1_alqp5"]
+[ext_resource type="Texture2D" uid="uid://cgmlqedb1ye6p" path="res://game/whistle/art/Estrella.png" id="2_kb7ma"]
 [ext_resource type="Texture2D" uid="uid://dsdynfsd0h6kf" path="res://game/whistle/art/silbato01.png" id="2_twiqm"]
 [ext_resource type="Texture2D" uid="uid://bb301gnqll5i4" path="res://game/whistle/art/silbato02.png" id="3_i30yd"]
 [ext_resource type="Texture2D" uid="uid://dv2ntx5y7p48b" path="res://game/whistle/art/silbato03.png" id="4_ekm2r"]
@@ -180,6 +181,12 @@ _data = {
 
 [node name="Whistle" type="Node2D"]
 script = ExtResource("1_alqp5")
+
+[node name="Estrella" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.7058824)
+position = Vector2(-7.000001, -34)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_kb7ma")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qf2x0")

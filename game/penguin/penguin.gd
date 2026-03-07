@@ -4,7 +4,8 @@ const COLOR_DANGER = Color("ff0000")
 const COLOR_COLD = Color("00aeff")
 const COLOR_MEDIUM = Color("ffd264")
 
-@export var max_temperature: int = 10
+@export var min_temp: int = -5
+@export var max_temp: int = 10
 @export var move_speed: float = 60.0
 @export var dir_change_time: float = 2.0
 
@@ -101,18 +102,18 @@ func set_letter(l: String) -> void:
 
 
 func cool_down(amount: int = 1) -> void:
-	temperature = clampi(temperature - amount, -10, max_temperature)
+	temperature = clampi(temperature - amount, min_temp, max_temp)
 	_refresh_bar()
 
 
 func apply_heat(amount: int) -> void:
-	temperature = clampi(temperature + amount, -10, max_temperature)
+	temperature = clampi(temperature + amount, min_temp, max_temp)
 	_refresh_bar()
 	_check_death()
 
 
 func _on_temp_tick() -> void:
-	temperature = clampi(temperature + 1, -10, max_temperature)
+	temperature = clampi(temperature + 1, min_temp, max_temp)
 	_refresh_bar()
 	_check_death()
 
@@ -193,6 +194,7 @@ func _refresh_bar() -> void:
 
 
 func _check_death() -> void:
-	if temperature >= max_temperature:
+	if temperature >= max_temp:
 		print("Penguin '%s' overheated!" % letter)
+		GameHandler.add_lost_penguin()
 		queue_free()

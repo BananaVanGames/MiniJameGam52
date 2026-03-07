@@ -25,6 +25,7 @@ grow_vertical = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qo14e")
+autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
