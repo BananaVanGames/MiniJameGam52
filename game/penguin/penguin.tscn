@@ -184,3 +184,7 @@ offset_top = -95.0
 offset_right = 51.0
 offset_bottom = -68.0
 show_percentage = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

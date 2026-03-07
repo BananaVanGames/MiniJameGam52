@@ -12,6 +12,6 @@ const WHISTLE_SOUNDS = [WHISTLE_1, WHISTLE_2, WHISTLE_3]
 func blow_whistle() -> void:
 	audio_stream_player.stream = WHISTLE_SOUNDS.pick_random()
 	audio_stream_player.play()
-	
+
 	animation_player.stop()
 	animation_player.play("blow")
