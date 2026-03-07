@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0qmhsecy1gnq"]
+[gd_scene load_steps=23 format=3 uid="uid://d0qmhsecy1gnq"]
 
 [ext_resource type="Script" uid="uid://dw1ri84bv1px" path="res://game/penguin/penguin.gd" id="1_wmdo7"]
 [ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="2_0cu47"]
@@ -9,8 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://ccci2hk4k2hgq" path="res://game/penguin/art/pinwino06.png" id="7_dubca"]
 [ext_resource type="Texture2D" uid="uid://b8rblaufcug0x" path="res://game/penguin/art/pinwino07.png" id="8_4ewhg"]
 [ext_resource type="Texture2D" uid="uid://ddisqb60btiix" path="res://game/penguin/art/tecla.png" id="9_vu7vq"]
-[ext_resource type="Texture2D" uid="uid://b8abxn0c5y6p" path="res://game/penguin/art/tecla-presionada.png" id="10_13136"]
 [ext_resource type="AudioStream" uid="uid://byniqk31t0pn6" path="res://game/penguin/sounds/tecla.mp3" id="11_13136"]
+[ext_resource type="Texture2D" uid="uid://codk6g7w7m4is" path="res://game/penguin/art/termometer_cold.png" id="11_iodxu"]
+[ext_resource type="Texture2D" uid="uid://c8gnquc4lylk1" path="res://game/penguin/art/termometer_hot_1 (1).png" id="12_r62jp"]
+[ext_resource type="Texture2D" uid="uid://btxu6dqtaqxqb" path="res://game/penguin/art/termometer_hot_1 (2).png" id="13_2ra44"]
+[ext_resource type="Texture2D" uid="uid://dlp04i7kra830" path="res://game/penguin/art/termometer_hot_1 (3).png" id="14_t2gtx"]
+[ext_resource type="Texture2D" uid="uid://bftma3h05xnqs" path="res://game/penguin/art/termometer_hot_1 (4).png" id="15_c0ad2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r62jp"]
 animations = [{
@@ -150,6 +154,41 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ra44"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvwco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r62jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_r62jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2ra44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2ra44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t2gtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t2gtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c0ad2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c0ad2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r62jp"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Penguin" type="CharacterBody2D" groups=["penguins"]]
 script = ExtResource("1_wmdo7")
 
@@ -175,34 +214,39 @@ disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="Tecla" type="TextureRect" parent="."]
-offset_left = -16.0
-offset_top = 46.0
-offset_right = 23.0
-offset_bottom = 83.0
+[node name="Tecla" type="Sprite2D" parent="."]
+position = Vector2(2.625, 64)
+scale = Vector2(0.19375, 0.17999998)
 texture = ExtResource("9_vu7vq")
 
-[node name="Tecla-presionada" type="TextureRect" parent="."]
-offset_left = -16.0
-offset_top = 46.0
-offset_right = 23.0
-offset_bottom = 83.0
-texture = ExtResource("10_13136")
-
 [node name="LetterLabel" type="Label" parent="."]
-offset_left = -3.0
-offset_top = 53.0
-offset_right = 14.0
-offset_bottom = 76.0
+offset_left = -7.0
+offset_top = 52.0
+offset_right = 12.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-
-[node name="TempBar" type="ProgressBar" parent="."]
-offset_left = -47.0
-offset_top = -95.0
-offset_right = 51.0
-offset_bottom = -68.0
-show_percentage = false
 
 [node name="Tecla-sonido" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_13136")
 bus = &"SFX"
+
+[node name="Termometer" type="Sprite2D" parent="."]
+position = Vector2(44, 0)
+scale = Vector2(0.392, 0.369)
+texture = ExtResource("11_iodxu")
+
+[node name="TermometerRed" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(44, 0)
+scale = Vector2(0.369, 0.369)
+sprite_frames = SubResource("SpriteFrames_nvwco")
+frame_progress = 0.04083217
+
+[node name="TempBar" type="ProgressBar" parent="."]
+offset_left = 42.0
+offset_top = -30.0
+offset_right = 46.0
+offset_bottom = 13.0
+theme_override_styles/background = SubResource("StyleBoxFlat_r62jp")
+fill_mode = 3
+show_percentage = false

@@ -1,11 +1,20 @@
 extends CharacterBody2D
 
+const COLOR_DANGER = Color("ff0000")
+const COLOR_COLD = Color("00aeff")
+const COLOR_MEDIUM = Color("ffd264")
+
 @export var max_temperature: int = 10
 @export var move_speed: float = 60.0
 @export var dir_change_time: float = 2.0
 
 var temperature: int = 0
 var letter: String = ""
+
+var tex_tecla = load("res://game/penguin/art/tecla.png")
+var tex_tecla_press = load("res://game/penguin/art/tecla-presionada.png")
+var termometro_medium = load("res://game/penguin/art/termometer_medium.png")
+var termometro_cold = load("res://game/penguin/art/termometer_cold.png")
 
 var _move_dir: Vector2 = Vector2.ZERO
 var _screen_rect: Rect2
@@ -17,10 +26,10 @@ var _entered_screen: bool = false # true once penguin is inside viewport
 @onready var letter_label: Label = $LetterLabel
 @onready var temp_bar: ProgressBar = $TempBar
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var tecla: TextureRect = $Tecla
-@onready var tecla_presionada: TextureRect = $"Tecla-presionada"
+@onready var tecla: Sprite2D = $Tecla
 @onready var tecla_sonido: AudioStreamPlayer = $"Tecla-sonido"
-
+@onready var termometer: Sprite2D = $Termometer
+@onready var termometer_red: AnimatedSprite2D = $TermometerRed
 
 
 func _ready() -> void:
@@ -67,12 +76,10 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if OS.get_keycode_string(event.keycode).to_upper() == letter:
-			tecla.visible  = false
-			tecla_presionada.visible = true
+			tecla.texture = tex_tecla_press
 			tecla_sonido.play()
 			await get_tree().create_timer(0.12).timeout
-			tecla.visible  = true
-			tecla_presionada.visible = false
+			tecla.texture = tex_tecla
 			cool_down(1)
 
 
@@ -132,23 +139,46 @@ func _pick_random_direction() -> void:
 		_move_dir = Vector2(cos(angle), sin(angle))
 
 
+func _set_danger_state(fill: StyleBoxFlat) -> void:
+	fill.bg_color = COLOR_DANGER
+
+	termometer.visible = false
+	termometer_red.visible = true
+
+	if not termometer_red.is_playing():
+		termometer_red.play()
+
+
+func _set_medium_state(fill: StyleBoxFlat) -> void:
+	fill.bg_color = COLOR_MEDIUM
+
+	termometer.visible = true
+	termometer_red.visible = false
+	termometer.texture = termometro_medium
+
+
+func _set_cold_state(fill: StyleBoxFlat) -> void:
+	fill.bg_color = COLOR_COLD
+
+	termometer.visible = true
+	termometer_red.visible = false
+	termometer.texture = termometro_cold
+
+
 func _refresh_bar() -> void:
 	temp_bar.value = temperature
 
-	var fill := StyleBoxFlat.new()
 	var danger_threshold := GameHandler.max_temperature - 3
-	if temperature >= danger_threshold:
-		fill.bg_color = Color(1.0, 0.15, 0.1) # red   — danger
-	elif temperature <= GameHandler.min_whistle_temp:
-		fill.bg_color = Color(0.2, 0.5, 1.0) # blue  — too cold
-	else:
-		fill.bg_color = Color(0.2, 0.85, 0.2) # green — acceptable
+	var fill := temp_bar.get_theme_stylebox("fill").duplicate() as StyleBoxFlat
 
-	var bg := StyleBoxFlat.new()
-	bg.bg_color = Color(0.1, 0.1, 0.1)
+	if temperature >= danger_threshold:
+		_set_danger_state(fill)
+	elif temperature <= GameHandler.min_whistle_temp:
+		_set_cold_state(fill)
+	else:
+		_set_medium_state(fill)
 
 	temp_bar.add_theme_stylebox_override("fill", fill)
-	temp_bar.add_theme_stylebox_override("background", bg)
 
 
 func _check_death() -> void:
