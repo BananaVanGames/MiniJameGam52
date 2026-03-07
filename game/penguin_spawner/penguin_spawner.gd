@@ -1,56 +1,59 @@
 extends Node2D
 
+const LETTER_POOL: Array[String] = [
+	"A", "B", "C", "D", "E", "F", "G", "H",
+	"I", "J", "K", "L", "M", "N", "O", "P",
+	"Q", "R", "S", "T", "U", "V", "W", "X",
+	"Y", "Z"
+]
+
 @export var penguin_scene: PackedScene
 
 @export_group("Spawning")
-@export var spawn_interval: float    = 3.0
-@export var max_simultaneous_spawns: int = 2   ## how many can spawn in the same wave
-@export var spawn_distance: float    = 60.0
-
-const LETTER_POOL: Array[String] = [
-	"A","B","C","D","E","F","G","H",
-	"I","J","K","L","M","N","O","P",
-	"Q","R","S","T","U","V","W","X",
-	"Y","Z"
-]
+@export var spawn_interval: float = 3.0
+@export var max_simultaneous_spawns: int = 2 ## how many can spawn in the same wave
+@export var spawn_distance: float = 60.0
 
 var _available_letters: Array[String] = []
+
 
 func _ready() -> void:
 	_available_letters = LETTER_POOL.duplicate()
 	var t := Timer.new()
 	t.wait_time = spawn_interval
 	t.autostart = true
-	t.one_shot  = false
+	t.one_shot = false
 	t.timeout.connect(_on_spawn_timer)
 	add_child(t)
+
 
 func _on_spawn_timer() -> void:
 	if not GameHandler.level_active:
 		return
 
 	var active_count: int = get_tree().get_nodes_in_group("penguins").size()
-	var slots_free: int   = GameHandler.max_penguins - active_count
+	var slots_free: int = GameHandler.max_penguins - active_count
 
 	if slots_free <= 0 or _available_letters.is_empty():
 		return
 
 	var to_spawn: int = mini(max_simultaneous_spawns, slots_free)
-	to_spawn          = mini(to_spawn, _available_letters.size())
+	to_spawn = mini(to_spawn, _available_letters.size())
 
 	for _i in to_spawn:
 		_spawn_one()
+
 
 func _spawn_one() -> void:
 	if _available_letters.is_empty():
 		return
 
 	var letter_idx: int = randi() % _available_letters.size()
-	var letter: String  = _available_letters[letter_idx]
+	var letter: String = _available_letters[letter_idx]
 	_available_letters.remove_at(letter_idx)
 
 	var spawn_pos: Vector2 = _get_random_offscreen_position()
-	var edge_pos: Vector2  = _clamp_to_edge(spawn_pos)
+	var edge_pos: Vector2 = _clamp_to_edge(spawn_pos)
 
 	_show_warning(edge_pos, letter)
 	await get_tree().create_timer(1.0).timeout
@@ -65,24 +68,28 @@ func _spawn_one() -> void:
 	penguin.tree_exited.connect(_return_letter.bind(letter))
 	get_parent().add_child(penguin)
 
+
 func _return_letter(letter: String) -> void:
 	if letter not in _available_letters:
 		_available_letters.append(letter)
 
+
 func _get_random_offscreen_position() -> Vector2:
 	var s: Vector2 = get_viewport_rect().size
-	var d: float   = spawn_distance
+	var d: float = spawn_distance
 	match randi() % 4:
 		0: return Vector2(randf_range(0, s.x), -d)
 		1: return Vector2(randf_range(0, s.x), s.y + d)
-		2: return Vector2(-d,        randf_range(0, s.y))
-		3: return Vector2(s.x + d,   randf_range(0, s.y))
+		2: return Vector2(-d, randf_range(0, s.y))
+		3: return Vector2(s.x + d, randf_range(0, s.y))
 	return Vector2(-d, -d)
 
+
 func _clamp_to_edge(pos: Vector2) -> Vector2:
-	var s: Vector2    = get_viewport_rect().size
+	var s: Vector2 = get_viewport_rect().size
 	var margin: float = 30.0
 	return Vector2(clamp(pos.x, margin, s.x - margin), clamp(pos.y, margin, s.y - margin))
+
 
 func _show_warning(edge_pos: Vector2, letter: String) -> void:
 	var label := Label.new()
@@ -94,7 +101,7 @@ func _show_warning(edge_pos: Vector2, letter: String) -> void:
 	bg.bg_color = Color(0, 0, 0, 0.6)
 	bg.set_corner_radius_all(4)
 	bg.content_margin_left = 5; bg.content_margin_right = 5
-	bg.content_margin_top = 2;  bg.content_margin_bottom = 2
+	bg.content_margin_top = 2; bg.content_margin_bottom = 2
 	label.add_theme_stylebox_override("normal", bg)
 	add_child(label)
 	var tween := create_tween().set_loops(3)
