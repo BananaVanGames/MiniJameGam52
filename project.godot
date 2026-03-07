@@ -14,11 +14,11 @@ config/name="minijamegam52"
 config/tags=PackedStringArray("gamejam", "github", "group")
 run/main_scene="uid://6n3h48sf0yhd"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d80824e7domy"
 
 [audio]
 
-buses/default_bus_layout="res://ui/main_menu/default_bus_layout.tres"
+buses/default_bus_layout="uid://cxv3e1ea2mint"
 
 [autoload]
 

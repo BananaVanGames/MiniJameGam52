@@ -3,26 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddisqb60btiix"
-path="res://.godot/imported/tecla.png-c96e5b97d9f03cc64c09b65dfd24552a.ctex"
+path.s3tc="res://.godot/imported/tecla.png-c96e5b97d9f03cc64c09b65dfd24552a.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/penguin/art/tecla.png"
-dest_files=["res://.godot/imported/tecla.png-c96e5b97d9f03cc64c09b65dfd24552a.ctex"]
+dest_files=["res://.godot/imported/tecla.png-c96e5b97d9f03cc64c09b65dfd24552a.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
+compress/normal_map=2
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

@@ -46,10 +46,11 @@ func load_level(config: Dictionary) -> void:
 
 
 func player_blows_whistle() -> void:
+	whistle_blown.emit()
+
 	if not level_active:
 		return
 
-	whistle_blown.emit()
 	freeze_penguins()
 
 

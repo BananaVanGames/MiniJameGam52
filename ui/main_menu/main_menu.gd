@@ -30,7 +30,7 @@ var flip = {
 @onready var audio: Button = $Settings/Control2/Audio
 @onready var back: Button = $Back
 @onready var menu_penguin: MenuPenguin = $MenuPenguin
-@onready var whistle: Node2D = $Whistle
+@onready var whistle: Node2D = $CanvasLayer/Whistle
 
 
 func _ready():
@@ -39,7 +39,6 @@ func _ready():
 	_update_back_button()
 
 	back_button.pressed.connect(_on_back_pressed)
-	#scoreboard_button.connect(_navigate_to(scoreboard))
 	settings_button.pressed.connect(_navigate_to.bind(main_settings))
 	video_button.pressed.connect(_navigate_to.bind(video_settings))
 	audio_button.pressed.connect(_navigate_to.bind(audio_settings))
@@ -65,6 +64,11 @@ func _process(delta: float) -> void:
 	handle_hover_button_behaviour(delta)
 	handle_following_penguin(delta)
 
+	if video_settings.visible:
+		video_settings.entered_video = true
+	if audio_settings.visible:
+		audio_settings.entered_audio = true
+
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Esc"):
@@ -79,7 +83,7 @@ func handle_following_penguin(delta: float) -> void:
 	elif mouse_pos > menu_penguin.global_position:
 		menu_penguin.flip_penguin_to(flip["RIGHT"])
 
-	var new_pos = menu_penguin.global_position.move_toward(mouse_pos, speed * delta)
+	var new_pos = menu_penguin.global_position.move_toward(Vector2(mouse_pos.x, mouse_pos.y + 65), speed * delta)
 	var viewport_size = get_viewport_rect().size
 	var margin := 100.0
 
@@ -136,6 +140,11 @@ func _on_back_pressed() -> bool:
 	current_panel = nav_stack.pop_back()
 	_show_panel(current_panel)
 	_update_back_button()
+	if not back_button.visible:
+		print("SETTINGS SAVED")
+		SettingsManager.save_settings(
+			video_settings.get_video_settings(), audio_settings.get_audio_settings()
+		)
 	return false
 
 

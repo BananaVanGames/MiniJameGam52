@@ -1,13 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://7oew5x4hq6kt"]
+[gd_scene load_steps=7 format=3 uid="uid://7oew5x4hq6kt"]
 
 [ext_resource type="Script" uid="uid://badmcclonhj7b" path="res://game/level_1.gd" id="1_sgg2w"]
+[ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background.tscn" id="2_e3oi6"]
 [ext_resource type="PackedScene" uid="uid://c0vvklnvontax" path="res://game/penguin_spawner/penguin_spawner.tscn" id="2_s6k5d"]
 [ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="3_sgg2w"]
+[ext_resource type="AudioStream" uid="uid://cuc8bor1dge2r" path="res://sound/music/penguin music.ogg" id="4_qo14e"]
+[ext_resource type="PackedScene" uid="uid://dx44rq4bqg8oj" path="res://ui/pause_menu/pause_menu.tscn" id="6_44xb3"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_sgg2w")
 
+[node name="BeachShaderTest" parent="." instance=ExtResource("2_e3oi6")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 1151.0
+offset_bottom = 643.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="PenguinSpawner" parent="." instance=ExtResource("2_s6k5d")]
 
-[node name="Whistle" parent="." instance=ExtResource("3_sgg2w")]
-position = Vector2(1040, 600)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qo14e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Whistle" parent="CanvasLayer" instance=ExtResource("3_sgg2w")]
+position = Vector2(1030, 562)
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_44xb3")]
+visible = false

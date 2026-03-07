@@ -16,32 +16,18 @@ const LETTER_POOL: Array[String] = [
 
 var _available_letters: Array[String] = []
 
+@onready var spawner_timer: Timer = $SpawnerTimer
+
 
 func _ready() -> void:
 	_available_letters = LETTER_POOL.duplicate()
-	var t := Timer.new()
-	t.wait_time = spawn_interval
-	t.autostart = true
-	t.one_shot = false
-	t.timeout.connect(_on_spawn_timer)
-	add_child(t)
+	spawner_timer.wait_time = spawn_interval
+	get_parent().start_playing.connect(start_spawning)
 
 
-func _on_spawn_timer() -> void:
-	if not GameHandler.level_active:
-		return
-
-	var active_count: int = get_tree().get_nodes_in_group("penguins").size()
-	var slots_free: int = GameHandler.max_penguins - active_count
-
-	if slots_free <= 0 or _available_letters.is_empty():
-		return
-
-	var to_spawn: int = mini(max_simultaneous_spawns, slots_free)
-	to_spawn = mini(to_spawn, _available_letters.size())
-
-	for _i in to_spawn:
-		_spawn_one()
+func start_spawning() -> void:
+	print("START TIMER")
+	spawner_timer.start()
 
 
 func _spawn_one() -> void:
@@ -109,3 +95,20 @@ func _show_warning(edge_pos: Vector2, letter: String) -> void:
 	tween.tween_property(label, "modulate:a", 1.0, 0.15)
 	await get_tree().create_timer(1.0).timeout
 	label.queue_free()
+
+
+func _on_spawner_timer_timeout() -> void:
+	if not GameHandler.level_active:
+		return
+
+	var active_count: int = get_tree().get_nodes_in_group("penguins").size()
+	var slots_free: int = GameHandler.max_penguins - active_count
+
+	if slots_free <= 0 or _available_letters.is_empty():
+		return
+
+	var to_spawn: int = mini(max_simultaneous_spawns, slots_free)
+	to_spawn = mini(to_spawn, _available_letters.size())
+
+	for _i in to_spawn:
+		_spawn_one()

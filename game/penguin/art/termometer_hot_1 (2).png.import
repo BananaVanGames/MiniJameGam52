@@ -3,26 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btxu6dqtaqxqb"
-path="res://.godot/imported/termometer_hot_1 (2).png-6f4acb4cd298e55eea163f4301f9616e.ctex"
+path.s3tc="res://.godot/imported/termometer_hot_1 (2).png-6f4acb4cd298e55eea163f4301f9616e.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/penguin/art/termometer_hot_1 (2).png"
-dest_files=["res://.godot/imported/termometer_hot_1 (2).png-6f4acb4cd298e55eea163f4301f9616e.ctex"]
+dest_files=["res://.godot/imported/termometer_hot_1 (2).png-6f4acb4cd298e55eea163f4301f9616e.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
+compress/normal_map=2
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

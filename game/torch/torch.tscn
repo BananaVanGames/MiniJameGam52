@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqmwhsd0wddon"]
+
+[ext_resource type="Script" uid="uid://hhqbgslx0y1i" path="res://game/torch/torch.gd" id="1_abfs3"]
+[ext_resource type="Texture2D" uid="uid://b80ru58xp01go" path="res://game/torch/art/antorcha-01.png" id="1_amay4"]
+[ext_resource type="Texture2D" uid="uid://bfgihuk2ee8qd" path="res://game/torch/art/antorcha-02.png" id="2_ugr48"]
+[ext_resource type="Texture2D" uid="uid://tgsvdh3obk3m" path="res://game/torch/art/antorcha-03.png" id="3_abfs3"]
+[ext_resource type="Texture2D" uid="uid://b3mntm047xt5g" path="res://game/torch/art/antorcha-04.png" id="4_smrxc"]
+[ext_resource type="Texture2D" uid="uid://e74yyhb0dxqt" path="res://game/torch/art/antorcha-OL.png" id="5_ugr48"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2j6re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_amay4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_amay4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_amay4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_amay4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ugr48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ugr48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ugr48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ugr48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_abfs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_abfs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_abfs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_abfs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smrxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smrxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smrxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smrxc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Torch" type="Node2D"]
+clip_children = 1
+script = ExtResource("1_abfs3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2j6re")
+frame = 15
+
+[node name="AntorchaOl" type="Sprite2D" parent="."]
+position = Vector2(-53, 122)
+texture = ExtResource("5_ugr48")

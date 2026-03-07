@@ -90,6 +90,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvwco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r62jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_r62jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2ra44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2ra44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t2gtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t2gtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c0ad2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c0ad2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r62jp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r62jp"]
+radius = 10.049875
+
 [sub_resource type="Animation" id="Animation_527ww"]
 length = 0.001
 tracks/0/type = "value"
@@ -152,101 +190,65 @@ _data = {
 &"walking": SubResource("Animation_vcecl")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ra44"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nvwco"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_r62jp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_r62jp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2ra44")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2ra44")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_t2gtx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_t2gtx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_c0ad2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_c0ad2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 24.0
-}]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r62jp"]
-bg_color = Color(1, 1, 1, 1)
-
 [node name="Penguin" type="CharacterBody2D" groups=["penguins"]]
+collision_layer = 0
 script = ExtResource("1_wmdo7")
 
+[node name="LetterLabel" type="Label" parent="."]
+offset_left = -9.0
+offset_top = 12.0
+offset_right = 10.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -40)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_r62jp")
 animation = &"walking"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_j3hdq")
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_2ra44")
-disabled = true
-
-[node name="DirTimer" type="Timer" parent="."]
-
-[node name="TempTimer" type="Timer" parent="."]
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [node name="Tecla" type="Sprite2D" parent="."]
-position = Vector2(2.625, 64)
+position = Vector2(0.625, 24)
 scale = Vector2(0.19375, 0.17999998)
 texture = ExtResource("9_vu7vq")
 
-[node name="LetterLabel" type="Label" parent="."]
-offset_left = -7.0
-offset_top = 52.0
-offset_right = 12.0
-offset_bottom = 75.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
-[node name="Tecla-sonido" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_13136")
-bus = &"SFX"
-
 [node name="Termometer" type="Sprite2D" parent="."]
-position = Vector2(44, 0)
+position = Vector2(42, -40.000004)
 scale = Vector2(0.392, 0.369)
 texture = ExtResource("11_iodxu")
 
 [node name="TermometerRed" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(44, 0)
+position = Vector2(42, -40.000004)
 scale = Vector2(0.369, 0.369)
 sprite_frames = SubResource("SpriteFrames_nvwco")
 frame_progress = 0.04083217
 
 [node name="TempBar" type="ProgressBar" parent="."]
-offset_left = 42.0
-offset_top = -30.0
-offset_right = 46.0
-offset_bottom = 13.0
+offset_left = 40.0
+offset_top = -70.0
+offset_right = 44.0
+offset_bottom = -27.0
 theme_override_styles/background = SubResource("StyleBoxFlat_r62jp")
 fill_mode = 3
 show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r62jp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DirTimer" type="Timer" parent="."]
+
+[node name="TempTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Tecla-sonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_13136")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j3hdq")
+}

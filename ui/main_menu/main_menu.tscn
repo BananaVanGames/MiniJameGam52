@@ -29,10 +29,8 @@ audio_button = NodePath("Settings/Control2/Audio")
 
 [node name="BeachShaderTest" parent="." instance=ExtResource("2_i5wg5")]
 layout_mode = 1
-offset_left = 2.0
-offset_top = -1.0
-offset_right = 2.0
-offset_bottom = -1.0
+offset_top = -2.0
+offset_bottom = -2.0
 
 [node name="Menu" type="VBoxContainer" parent="."]
 texture_filter = 1
@@ -108,10 +106,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 36)
 text = "Quit"
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/Control4/Quit"]
-layout_mode = 0
-theme_override_constants/margin_bottom = 30
 
 [node name="Settings" type="VBoxContainer" parent="."]
 visible = false
@@ -321,10 +315,12 @@ pivot_offset = Vector2(100, 50)
 text = "Back"
 
 [node name="MenuPenguin" parent="." instance=ExtResource("5_3c04x")]
-position = Vector2(865, 333)
+position = Vector2(910, 545)
 
-[node name="Whistle" parent="." instance=ExtResource("6_joh67")]
-position = Vector2(1025, 536)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Whistle" parent="CanvasLayer" instance=ExtResource("6_joh67")]
+position = Vector2(1033, 568)
 
 [connection signal="pressed" from="Menu/Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Control2/Scoreboard" to="." method="_on_scoreboard_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cuc8bor1dge2r"
+path="res://.godot/imported/penguin music.ogg-28f22af8f9473234b3842ad4d9b6881a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/penguin music.ogg"
+dest_files=["res://.godot/imported/penguin music.ogg-28f22af8f9473234b3842ad4d9b6881a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,6 +7,11 @@ const MAX_DB = 0.0
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
 
+var entered_audio: bool = false
+var master: float = 0
+var music: float = 0
+var sfx: float = 0
+
 
 func _ready():
 	_sync_sliders()
@@ -16,10 +21,19 @@ func _ready():
 	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
 
 
+func get_audio_settings() -> Dictionary:
+	if entered_audio:
+		return { "master_volume": master, "music_volume": music, "sfx_volume": sfx }
+	else:
+		return {}
+
 func _sync_sliders():
-	master_slider.value = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
-	music_slider.value = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
-	sfx_slider.value = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	master = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	master_slider.value = master
+	music = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+	music_slider.value = music
+	sfx = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	sfx_slider.value = sfx
 
 
 func _slider_to_db(value: float) -> float:
@@ -43,6 +57,10 @@ func _set_volume(bus_name: String, value: float):
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(bus_index, db)
 	AudioServer.set_bus_mute(bus_index, db <= MIN_DB)
+	match bus_index:
+		0: master = value
+		1: music = value
+		2: sfx = value
 
 
 func _on_master_volume_changed(value: float):

@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://y27ks8awrntc"]
+[gd_scene load_steps=5 format=3 uid="uid://y27ks8awrntc"]
 
-[ext_resource type="Shader" uid="uid://r0w7cklpxx28" path="res://game/background/background.gdshader" id="1_hvye4"]
-[ext_resource type="Texture2D" uid="uid://d1rfedx781ufq" path="res://game/background/sand_noise_texture_2d.tres" id="2_uc1g5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fypbl"]
-shader = ExtResource("1_hvye4")
-shader_parameter/noise_texture = ExtResource("2_uc1g5")
-shader_parameter/noise_strength = 0.25
-shader_parameter/noise_scale = 0.5
+[ext_resource type="Texture2D" uid="uid://bfbbutvx6ptuf" path="res://game/background/image.png" id="1_2qg8k"]
+[ext_resource type="PackedScene" uid="uid://dqmwhsd0wddon" path="res://game/torch/torch.tscn" id="2_uj5s0"]
+[ext_resource type="Texture2D" uid="uid://drlqn5isxo1dm" path="res://game/background/towel.png" id="3_2qg8k"]
+[ext_resource type="Texture2D" uid="uid://lpaq82t1dfes" path="res://game/background/umbrela.png" id="4_xlr7x"]
 
 [node name="BeachShaderTest" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
@@ -20,14 +16,50 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Beach" type="ColorRect" parent="."]
-texture_filter = 1
-texture_repeat = 2
-material = SubResource("ShaderMaterial_fypbl")
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.0
+offset_top = -349.0
+offset_right = 1379.1614
+offset_bottom = 796.00977
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8862745, 0.77254903, 0.54509807, 1)
+scale = Vector2(0.60409635, 0.6096018)
+texture = ExtResource("1_2qg8k")
+
+[node name="Torch" parent="." instance=ExtResource("2_uj5s0")]
+z_index = 3
+position = Vector2(393, 511)
+
+[node name="Torch2" parent="." instance=ExtResource("2_uj5s0")]
+z_index = 3
+position = Vector2(769, 507)
+scale = Vector2(-1, 1)
+
+[node name="Torch3" parent="." instance=ExtResource("2_uj5s0")]
+z_index = 3
+position = Vector2(129, 500)
+
+[node name="Torch4" parent="." instance=ExtResource("2_uj5s0")]
+z_index = 3
+position = Vector2(1067, 528)
+scale = Vector2(-1, 1)
+
+[node name="Towel" type="Sprite2D" parent="."]
+position = Vector2(883, 310)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_2qg8k")
+
+[node name="Umbrela" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(807, 162)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xlr7x")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(797, 246)

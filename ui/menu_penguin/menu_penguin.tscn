@@ -1,16 +1,212 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbdrco7jv3grm"]
+[gd_scene load_steps=21 format=3 uid="uid://dbdrco7jv3grm"]
 
 [ext_resource type="Script" uid="uid://djp2jovs47bbg" path="res://ui/menu_penguin/menu_penguin.gd" id="1_5j71f"]
 [ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="1_s4c4m"]
 [ext_resource type="Texture2D" uid="uid://cod61tgvmu3n" path="res://game/penguin/art/pinwino02.png" id="2_5j71f"]
+[ext_resource type="Texture2D" uid="uid://b1j38dkci56ui" path="res://game/penguin/art/idle101.png" id="2_uiifo"]
+[ext_resource type="Texture2D" uid="uid://bnu7kctftv22f" path="res://game/penguin/art/idle102.png" id="3_7rex7"]
 [ext_resource type="Texture2D" uid="uid://c2jkke6mpoup2" path="res://game/penguin/art/pinwino03.png" id="3_ijhfu"]
 [ext_resource type="Texture2D" uid="uid://xguwjawa1es" path="res://game/penguin/art/pinwino04.png" id="4_ktepe"]
+[ext_resource type="Texture2D" uid="uid://cl6d7w0ghhhqx" path="res://game/penguin/art/idle103.png" id="4_wmbr2"]
 [ext_resource type="Texture2D" uid="uid://dah1m6bvkqsw3" path="res://game/penguin/art/pinwino05.png" id="5_7oiec"]
+[ext_resource type="Texture2D" uid="uid://c145ko4fdk4pa" path="res://game/penguin/art/idle104.png" id="5_weunq"]
 [ext_resource type="Texture2D" uid="uid://ccci2hk4k2hgq" path="res://game/penguin/art/pinwino06.png" id="6_qogvu"]
+[ext_resource type="Texture2D" uid="uid://ujaqil5mpp7w" path="res://game/penguin/art/idle105.png" id="6_xsqgl"]
 [ext_resource type="Texture2D" uid="uid://b8rblaufcug0x" path="res://game/penguin/art/pinwino07.png" id="7_k0bev"]
+[ext_resource type="Texture2D" uid="uid://cmklxk6nxntn5" path="res://game/penguin/art/idle106.png" id="7_we0dl"]
+[ext_resource type="Texture2D" uid="uid://d06f62nxiyvx" path="res://game/penguin/art/idle107.png" id="8_7ixlw"]
+[ext_resource type="Texture2D" uid="uid://dh5gi5840u8wk" path="res://game/penguin/art/idle108.png" id="9_4x07e"]
+[ext_resource type="Texture2D" uid="uid://din1x8ekbx6mn" path="res://game/penguin/art/idle109.png" id="10_i0jqn"]
+[ext_resource type="Texture2D" uid="uid://bdr3wuyy7tb55" path="res://game/penguin/art/idle110.png" id="11_4jcdq"]
+[ext_resource type="Texture2D" uid="uid://dxb6vux3b0e2f" path="res://game/penguin/art/idle111.png" id="12_6667o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cimb6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weunq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weunq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weunq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ixlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ixlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ixlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i0jqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i0jqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4jcdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4jcdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6667o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6667o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4x07e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i0jqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i0jqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4jcdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4jcdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6667o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6667o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ixlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ixlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_we0dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xsqgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weunq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_weunq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wmbr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rex7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uiifo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_s4c4m")
@@ -83,78 +279,12 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="Animation" id="Animation_527ww"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walking"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_vcecl"]
-resource_name = "walking"
-length = 0.8736
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walking"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8736),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 21]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3hdq"]
-_data = {
-&"RESET": SubResource("Animation_527ww"),
-&"walking": SubResource("Animation_vcecl")
-}
-
 [node name="MenuPenguin" type="Node2D"]
 script = ExtResource("1_5j71f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(14, 34)
+position = Vector2(-2, -39)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cimb6")
-animation = &"walking"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_j3hdq")
-}
+animation = &"idle"
+frame_progress = 0.35949534

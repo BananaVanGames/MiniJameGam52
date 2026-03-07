@@ -6,17 +6,23 @@ enum steps {
 	READY,
 	SET,
 	FREEZE,
+	FREE,
 }
 
 @export var initial_time: float = 0.75
 @export var step_time: float = 0.5
 
-var current_step = steps.READY
+var current_step: steps = steps.READY
+var color_rect_opacity = [1, 1, 0.8, 0.4, 0]
+var step := 1
 
 @onready var timer: Timer = $Timer
-@onready var ready_label: Label = $Ready
-@onready var set_label: Label = $Set
-@onready var freeze_label: Label = $"Freeze!"
+@onready var labels: Array[Label] = [
+	$Ready,
+	$Set,
+	$"Freeze!"
+]
+@onready var color_rect: ColorRect = $ColorRect
 
 
 func _ready() -> void:
@@ -24,18 +30,14 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	timer.start(step_time)
-	match(current_step):
-		steps.READY:
-			ready_label.visible = false
-			set_label.visible = true
-			current_step = steps.SET
-		steps.SET:
-			set_label.visible = false
-			freeze_label.visible = true
-			current_step = steps.FREEZE
-		steps.FREEZE:
-			freeze_label.visible = false
-		_: 
-			intro_finished.emit()
-			queue_free()
+	if step < labels.size():
+		if step > 0:
+			labels[step - 1].visible = false
+
+		labels[step].visible = true
+		step += 1
+		color_rect.color.a = color_rect_opacity[step]
+		timer.start(step_time)
+	else:
+		intro_finished.emit()
+		queue_free()

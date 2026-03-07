@@ -5,6 +5,12 @@ extends VBoxContainer
 @export var borderless_check: CheckBox
 @export var vsync_check: CheckBox
 
+var entered_video: bool = false
+var resolution: Vector2i
+var fullscreen: bool
+var borderless: bool
+var vsync: bool
+
 
 func _ready() -> void:
 	var resolutions = [
@@ -40,14 +46,23 @@ func load_current_settings() -> void:
 			break
 
 
+func get_video_settings() -> Dictionary:
+	if entered_video:
+		return { "resolution": resolution, "fullscreen": fullscreen, "borderless": borderless, "vsync": vsync }
+	else:
+		return {}
+
+
 func _on_resolution_selected(index: int):
 	var text = resolution_option.get_item_text(index)
 	var parts = text.split("x")
 	if parts.size() == 2:
-		DisplayServer.window_set_size(Vector2i(int(parts[0]), int(parts[1])))
+		resolution = Vector2i(int(parts[0]), int(parts[1]))
+		DisplayServer.window_set_size(resolution)
 
 
 func _on_fullscreen_toggled(enabled: bool):
+	fullscreen = enabled
 	if enabled:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -55,9 +70,11 @@ func _on_fullscreen_toggled(enabled: bool):
 
 
 func _on_borderless_toggled(enabled: bool):
+	borderless = enabled
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, enabled)
 
 
 func _on_vsync_toggled(enabled: bool):
+	vsync = enabled
 	var mode = DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(mode)

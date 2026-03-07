@@ -72,6 +72,8 @@ func _physics_process(_delta: float) -> void:
 	if _entered_screen and not _screen_rect.grow(-10).has_point(global_position):
 		_walk_toward_screen()
 
+	handle_penguin_z_index()
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -83,6 +85,15 @@ func _input(event: InputEvent) -> void:
 			cool_down(1)
 
 
+func handle_penguin_z_index() -> void:
+	if global_position.y < 246:
+		z_index = 0
+	elif global_position.y > 285 and global_position.y < 617:
+		z_index = 2
+	else:
+		z_index = 4
+
+
 func set_letter(l: String) -> void:
 	letter = l
 	if is_node_ready():
@@ -90,18 +101,18 @@ func set_letter(l: String) -> void:
 
 
 func cool_down(amount: int = 1) -> void:
-	temperature = clampi(temperature - amount, 0, max_temperature)
+	temperature = clampi(temperature - amount, -10, max_temperature)
 	_refresh_bar()
 
 
 func apply_heat(amount: int) -> void:
-	temperature = clampi(temperature + amount, 0, max_temperature)
+	temperature = clampi(temperature + amount, -10, max_temperature)
 	_refresh_bar()
 	_check_death()
 
 
 func _on_temp_tick() -> void:
-	temperature = clampi(temperature + 1, 0, max_temperature)
+	temperature = clampi(temperature + 1, -10, max_temperature)
 	_refresh_bar()
 	_check_death()
 
