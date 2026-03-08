@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://nmuiot7pimcr"]
+[gd_scene load_steps=3 format=3 uid="uid://nmuiot7pimcr"]
 
 [ext_resource type="Texture2D" uid="uid://bfbbutvx6ptuf" path="res://game/background/art/background.png" id="1_8p4eh"]
-[ext_resource type="Texture2D" uid="uid://drlqn5isxo1dm" path="res://game/background/art/towel.png" id="2_6opxq"]
 [ext_resource type="PackedScene" uid="uid://dqmwhsd0wddon" path="res://game/torch/torch.tscn" id="3_286cp"]
-[ext_resource type="Texture2D" uid="uid://lpaq82t1dfes" path="res://game/background/art/umbrela.png" id="4_ffa4o"]
 
 [node name="Background_Menu" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
@@ -32,37 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.60409635, 0.6096018)
 texture = ExtResource("1_8p4eh")
-
-[node name="Towel" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(1041, 259)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_6opxq")
-
-[node name="Towel2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(74.75, 159.4675)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6opxq")
-
-[node name="Towel3" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(55.75, 211.4675)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6opxq")
-
-[node name="Umbrela" type="Sprite2D" parent="."]
-position = Vector2(1009, 202)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ffa4o")
-offset = Vector2(20.515, -164.82)
-
-[node name="Umbrela2" type="Sprite2D" parent="."]
-position = Vector2(216.75, 204.4675)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ffa4o")
-offset = Vector2(-23.27, -167.435)
-flip_h = true
 
 [node name="Torch" parent="." instance=ExtResource("3_286cp")]
 position = Vector2(286, 391)
