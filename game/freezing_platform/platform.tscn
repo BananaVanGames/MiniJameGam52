@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd3xlkkvxwa7u"]
+
+[ext_resource type="Texture2D" uid="uid://br0q3wgrfj5hy" path="res://game/freezing_platform/plataforma01.png" id="1_84jov"]
+[ext_resource type="Texture2D" uid="uid://wf0r132440iq" path="res://game/freezing_platform/plataforma02.png" id="2_lt2nv"]
+[ext_resource type="Texture2D" uid="uid://grgy6ijde1x1" path="res://game/freezing_platform/plataforma_off.png" id="3_m5icd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0ws7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_84jov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_84jov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_84jov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_84jov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_84jov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt2nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt2nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt2nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt2nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt2nv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Platform" type="Node2D"]
+
+[node name="Platform" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_v0ws7")
+frame_progress = 0.60241514
+
+[node name="PlataformaOff" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_m5icd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-226, -39, 136, -42, 229, 32, -129, 37)
