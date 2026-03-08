@@ -64,6 +64,7 @@ animations = [{
 }]
 
 [node name="Torch" type="Node2D"]
+process_mode = 3
 clip_children = 1
 script = ExtResource("1_abfs3")
 

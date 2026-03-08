@@ -7,7 +7,8 @@ signal level_lost()
 
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
-var max_penguins: int = 8 ## max penguins alive at once
+var max_screen_penguins: int = 8 ## max penguins alive at once
+var max_level_penguins: int = 20 ## max penguins per level
 var max_temperature: int = 10 ## temperature at which a penguin dies
 var min_whistle_temp: int = 2 ## acceptable temp range low  (inclusive)
 var max_whistle_temp: int = 5 ## acceptable temp range high (inclusive)
@@ -23,7 +24,16 @@ func _process(_delta: float) -> void:
 		return
 
 
+func add_lost_penguin() -> void:
+	lost_penguins += 1
+
+
+func get_max_level_penguins() -> int:
+	return max_level_penguins
+
+
 func start_level() -> void:
+	lost_penguins = 0
 	score_points = 0
 	level_active = true
 	score_changed.emit(score_points, max_score_points)
@@ -38,7 +48,8 @@ func stop_level() -> void:
 func load_level(config: Dictionary) -> void:
 	level_number = config.get("level_number", 1)
 	max_score_points = config.get("max_score_points", 10)
-	max_penguins = config.get("max_penguins", 8)
+	max_screen_penguins = config.get("max_screen_penguins", 8)
+	max_level_penguins = config.get("max_level_penguins", 20)
 	max_temperature = config.get("max_temperature", 100)
 	min_whistle_temp = config.get("min_whistle_temp", 2)
 	max_whistle_temp = config.get("max_whistle_temp", 5)

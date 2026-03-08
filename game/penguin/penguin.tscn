@@ -194,13 +194,6 @@ _data = {
 collision_layer = 0
 script = ExtResource("1_wmdo7")
 
-[node name="LetterLabel" type="Label" parent="."]
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 10.0
-offset_bottom = 35.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -40)
 scale = Vector2(0.5, 0.5)
@@ -211,6 +204,13 @@ animation = &"walking"
 position = Vector2(0.625, 24)
 scale = Vector2(0.19375, 0.17999998)
 texture = ExtResource("9_vu7vq")
+
+[node name="LetterLabel" type="Label" parent="."]
+offset_left = -9.0
+offset_top = 12.0
+offset_right = 10.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Termometer" type="Sprite2D" parent="."]
 position = Vector2(42, -40.000004)
@@ -246,6 +246,7 @@ shape = SubResource("CircleShape2D_r62jp")
 
 [node name="Tecla-sonido" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_13136")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

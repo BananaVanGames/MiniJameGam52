@@ -14,9 +14,13 @@ const LETTER_POOL: Array[String] = [
 @export var max_simultaneous_spawns: int = 2 ## how many can spawn in the same wave
 @export var spawn_distance: float = 60.0
 
+var remaining_penguins: int = -1
+var level_clear: bool = false
+
 var _available_letters: Array[String] = []
 
 @onready var spawner_timer: Timer = $SpawnerTimer
+@onready var main_level: MainLevel = get_parent()
 
 
 func _ready() -> void:
@@ -24,13 +28,30 @@ func _ready() -> void:
 	spawner_timer.wait_time = spawn_interval
 	get_parent().start_playing.connect(start_spawning)
 
+func _process(_delta: float) -> void:
+	if remaining_penguins == 0:
+		if get_tree().get_nodes_in_group("penguins").is_empty():
+			main_level.end_level()
+			remaining_penguins = -1
 
 func start_spawning() -> void:
-	print("START TIMER")
+	update_remaining_penguins()
 	spawner_timer.start()
 
 
+func update_remaining_penguins() -> void:
+	remaining_penguins = GameHandler.get_max_level_penguins()
+
+
+func stop_spawning() -> void:
+	spawner_timer.stop()
+
+
 func _spawn_one() -> void:
+	if not remaining_penguins:
+		stop_spawning()
+		return
+
 	if _available_letters.is_empty():
 		return
 
@@ -53,6 +74,7 @@ func _spawn_one() -> void:
 	penguin.position = spawn_pos
 	penguin.tree_exited.connect(_return_letter.bind(letter))
 	get_parent().add_child(penguin)
+	remaining_penguins -= 1
 
 
 func _return_letter(letter: String) -> void:
@@ -82,7 +104,7 @@ func _show_warning(edge_pos: Vector2, letter: String) -> void:
 	label.text = "⚠ %s" % letter
 	label.position = edge_pos + Vector2(-16, -16)
 	label.add_theme_font_size_override("font_size", 16)
-	label.modulate = Color.YELLOW
+	label.modulate = Color.YELLOW 
 	var bg := StyleBoxFlat.new()
 	bg.bg_color = Color(0, 0, 0, 0.6)
 	bg.set_corner_radius_all(4)
@@ -90,6 +112,7 @@ func _show_warning(edge_pos: Vector2, letter: String) -> void:
 	bg.content_margin_top = 2; bg.content_margin_bottom = 2
 	label.add_theme_stylebox_override("normal", bg)
 	add_child(label)
+	label.z_index = 10
 	var tween := create_tween().set_loops(3)
 	tween.tween_property(label, "modulate:a", 0.2, 0.15)
 	tween.tween_property(label, "modulate:a", 1.0, 0.15)
@@ -102,7 +125,7 @@ func _on_spawner_timer_timeout() -> void:
 		return
 
 	var active_count: int = get_tree().get_nodes_in_group("penguins").size()
-	var slots_free: int = GameHandler.max_penguins - active_count
+	var slots_free: int = GameHandler.max_screen_penguins - active_count
 
 	if slots_free <= 0 or _available_letters.is_empty():
 		return

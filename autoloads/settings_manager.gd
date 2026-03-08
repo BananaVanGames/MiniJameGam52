@@ -69,7 +69,6 @@ func load_settings():
 func apply_video_settings(video_values: Dictionary):
 	var v = video_values
 	video_settings = video_values
-	print("VIDEO VALUES: ", video_values)
 
 	DisplayServer.window_set_vsync_mode(
 		DisplayServer.VSYNC_ENABLED if v["vsync"] else DisplayServer.VSYNC_DISABLED
