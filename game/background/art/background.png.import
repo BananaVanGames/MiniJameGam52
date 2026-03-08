@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0smhx76x46ak"
-path="res://.godot/imported/pngtree-noise-abstract-texture-dark-gray-noise-background-image_879896.jpg-bef95dcd973ebb3fa62b7382f1726e42.ctex"
+uid="uid://bfbbutvx6ptuf"
+path="res://.godot/imported/background.png-8615c5301ff5c5b67f414294730a488a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/pngtree-noise-abstract-texture-dark-gray-noise-background-image_879896.jpg"
-dest_files=["res://.godot/imported/pngtree-noise-abstract-texture-dark-gray-noise-background-image_879896.jpg-bef95dcd973ebb3fa62b7382f1726e42.ctex"]
+source_file="res://game/background/art/background.png"
+dest_files=["res://.godot/imported/background.png-8615c5301ff5c5b67f414294730a488a.ctex"]
 
 [params]
 

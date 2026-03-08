@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://nmuiot7pimcr"]
+
+[ext_resource type="Texture2D" uid="uid://bfbbutvx6ptuf" path="res://game/background/art/background.png" id="1_8p4eh"]
+[ext_resource type="Texture2D" uid="uid://drlqn5isxo1dm" path="res://game/background/art/towel.png" id="2_6opxq"]
+[ext_resource type="PackedScene" uid="uid://dqmwhsd0wddon" path="res://game/torch/torch.tscn" id="3_286cp"]
+[ext_resource type="Texture2D" uid="uid://lpaq82t1dfes" path="res://game/background/art/umbrela.png" id="4_ffa4o"]
+
+[node name="Background_Menu" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.0
+offset_top = -349.0
+offset_right = 1379.1614
+offset_bottom = 796.00977
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.60409635, 0.6096018)
+texture = ExtResource("1_8p4eh")
+
+[node name="Towel" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1041, 259)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_6opxq")
+
+[node name="Towel2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(74.75, 159.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6opxq")
+
+[node name="Towel3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(55.75, 211.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6opxq")
+
+[node name="Umbrela" type="Sprite2D" parent="."]
+position = Vector2(1009, 202)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ffa4o")
+offset = Vector2(20.515, -164.82)
+
+[node name="Umbrela2" type="Sprite2D" parent="."]
+position = Vector2(216.75, 204.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ffa4o")
+offset = Vector2(-23.27, -167.435)
+flip_h = true
+
+[node name="Torch" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(286, 391)
+metadata/_edit_group_ = true
+
+[node name="Torch2" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(189, 535)
+metadata/_edit_group_ = true
+
+[node name="Torch3" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(860, 402)
+scale = Vector2(-1, 1)
+
+[node name="Torch4" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(957, 535)
+scale = Vector2(-1, 1)
+
+[node name="Torch5" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(283, 640)
+
+[node name="Torch6" parent="." instance=ExtResource("3_286cp")]
+position = Vector2(885, 628)
+scale = Vector2(-1, 1)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlqn5isxo1dm"
-path="res://.godot/imported/towel.png-1c7565e975954e0e16e05a19f6df858e.ctex"
+uid="uid://c54jdl7khx8hc"
+path="res://.godot/imported/fuego01.png-bccb7fd0bbdadd3a75417cfa2e8a8b49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/towel.png"
-dest_files=["res://.godot/imported/towel.png-1c7565e975954e0e16e05a19f6df858e.ctex"]
+source_file="res://game/torch/art/fuego01.png"
+dest_files=["res://.godot/imported/fuego01.png-bccb7fd0bbdadd3a75417cfa2e8a8b49.ctex"]
 
 [params]
 

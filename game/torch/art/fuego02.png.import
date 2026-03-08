@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lpaq82t1dfes"
-path="res://.godot/imported/umbrela.png-6b316d8b5db66e8f0f278a2192162d23.ctex"
+uid="uid://dj4kcbn0pan57"
+path="res://.godot/imported/fuego02.png-9205e397dcd933c772fcd017fbfe4f7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/umbrela.png"
-dest_files=["res://.godot/imported/umbrela.png-6b316d8b5db66e8f0f278a2192162d23.ctex"]
+source_file="res://game/torch/art/fuego02.png"
+dest_files=["res://.godot/imported/fuego02.png-9205e397dcd933c772fcd017fbfe4f7d.ctex"]
 
 [params]
 

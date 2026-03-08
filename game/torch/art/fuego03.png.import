@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfbbutvx6ptuf"
-path="res://.godot/imported/image.png-dc75304744025a5378f8e60af305495b.ctex"
+uid="uid://6teihumpgwsk"
+path="res://.godot/imported/fuego03.png-26ec1903065f2daaf3ac577b1a5e536c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/image.png"
-dest_files=["res://.godot/imported/image.png-dc75304744025a5378f8e60af305495b.ctex"]
+source_file="res://game/torch/art/fuego03.png"
+dest_files=["res://.godot/imported/fuego03.png-26ec1903065f2daaf3ac577b1a5e536c.ctex"]
 
 [params]
 

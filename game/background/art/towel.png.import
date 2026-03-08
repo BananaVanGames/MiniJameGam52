@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c70nsny1aw6g4"
-path="res://.godot/imported/Background.jpg-fd91775e90aa9d1c71ccdfe54309a016.ctex"
+uid="uid://drlqn5isxo1dm"
+path="res://.godot/imported/towel.png-f270f669840849c8edd129ea95e6daa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/background/Background.jpg"
-dest_files=["res://.godot/imported/Background.jpg-fd91775e90aa9d1c71ccdfe54309a016.ctex"]
+source_file="res://game/background/art/towel.png"
+dest_files=["res://.godot/imported/towel.png-f270f669840849c8edd129ea95e6daa9.ctex"]
 
 [params]
 

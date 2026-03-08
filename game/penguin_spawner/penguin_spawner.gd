@@ -80,7 +80,6 @@ func _spawn_one() -> void:
 	penguin.tree_exited.connect(_return_letter.bind(letter))
 	get_parent().add_child(penguin)
 	remaining_penguins -= 1
-	print("REMAINING_PENGUINS: ", remaining_penguins)
 
 
 func _return_letter(letter: String) -> void:

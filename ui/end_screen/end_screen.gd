@@ -1,6 +1,7 @@
 extends Control
 
 const MAIN_MENU = preload("uid://6n3h48sf0yhd")
+const WIN_SCREEN = preload("uid://bcy7e2ejcx23e")
 
 @onready var title: Label = $VBoxContainer/Title
 @onready var level: Label = $VBoxContainer/Level
@@ -28,13 +29,13 @@ func show_end_summary() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	SceneLoader.load_scene("uid://6n3h48sf0yhd")
 
 
 func _on_next_pressed() -> void:
 	GameHandler.level_number += 1
-	if GameHandler.level_number >= 3: 
-		pass
+	if GameHandler.level_number > 3:
+		SceneLoader.load_scene("uid://bcy7e2ejcx23e")
 	else:
 		GameHandler.load_level(LevelData.LEVELS[GameHandler.level_number])
 		GameHandler.reset_level_parameters()

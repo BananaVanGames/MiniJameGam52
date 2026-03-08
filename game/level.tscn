@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://7oew5x4hq6kt"]
+
+[ext_resource type="Script" uid="uid://badmcclonhj7b" path="res://game/level.gd" id="1_3gsf4"]
+[ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background_1.tscn" id="2_hjv22"]
+[ext_resource type="PackedScene" uid="uid://bsxnvp3ye6gur" path="res://game/freezing_platform/platform.tscn" id="3_1565f"]
+[ext_resource type="PackedScene" uid="uid://c0vvklnvontax" path="res://game/penguin_spawner/penguin_spawner.tscn" id="4_ogdhh"]
+[ext_resource type="AudioStream" uid="uid://cuc8bor1dge2r" path="res://sound/music/penguin music.ogg" id="5_a2xg8"]
+[ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="6_a4abk"]
+[ext_resource type="PackedScene" uid="uid://dx44rq4bqg8oj" path="res://ui/pause_menu/pause_menu.tscn" id="7_5c5qw"]
+
+[node name="Level" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_3gsf4")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 584.0
+offset_top = 310.0
+offset_right = 624.0
+offset_bottom = 350.0
+
+[node name="Background_1" parent="Background" instance=ExtResource("2_hjv22")]
+layout_mode = 1
+
+[node name="Platform" parent="." instance=ExtResource("3_1565f")]
+z_index = -1
+position = Vector2(233, 339)
+
+[node name="PenguinSpawner" parent="." instance=ExtResource("4_ogdhh")]
+y_sort_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_a2xg8")
+parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Whistle" parent="CanvasLayer" instance=ExtResource("6_a4abk")]
+position = Vector2(1037, 572)
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_5c5qw")]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(327, 298)

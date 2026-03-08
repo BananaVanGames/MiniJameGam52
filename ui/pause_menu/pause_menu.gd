@@ -1,6 +1,5 @@
 extends Control
 
-const MAIN_MENU = preload("uid://6n3h48sf0yhd")
 const PIP = preload("uid://bg66rd8xs1bie")
 const PUP = preload("uid://xvk4jkqkwkth")
 
@@ -59,7 +58,7 @@ func _on_quit_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout
 	get_tree().set_pause(false)
 	visible = false
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	SceneLoader.load_scene("uid://6n3h48sf0yhd")
 
 
 func _on_resume_pressed() -> void:

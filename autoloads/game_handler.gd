@@ -36,7 +36,6 @@ func _process(_delta: float) -> void:
 
 func set_random_platform_positions(values: Array) -> void:
 	random_platform_positions = values
-	print("PLATFORM VALUES: ", random_platform_positions)
 
 
 func add_lost_penguin() -> void:
@@ -71,6 +70,8 @@ func load_level(config: Dictionary) -> void:
 	max_temperature = config.get("max_temperature")
 	freezing_temp = config.get("freezing_temp")
 	auto_whistle_interval = config.get("auto_whistle_interval")
+	
+	print("CURRENT LEVEL: ", config)
 
 
 func player_blows_whistle() -> void:
@@ -122,12 +123,12 @@ func trigger_loss() -> void:
 func _calculate_combo_score() -> void:
 	var n := _frozen_arrived
 	if n <= 0:
-		print("No frozen penguins — no score")
+		#print("No frozen penguins — no score")
 		return
 
 	# Formula: 1pt each + (n-1) combo bonus once
 	var total := n + (n - 1)
-	print("Frozen: %d | Combo bonus: +%d | Total score: +%d" % [n, n - 1, total])
+	#print("Frozen: %d | Combo bonus: +%d | Total score: +%d" % [n, n - 1, total])
 	_add_score(total)
 	print("CURRENT POINTS: ", score_points)
 

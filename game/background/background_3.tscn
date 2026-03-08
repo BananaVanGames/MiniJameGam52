@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxgk5c5h3056n"]
+
+[ext_resource type="Texture2D" uid="uid://bfbbutvx6ptuf" path="res://game/background/art/background.png" id="1_h41hi"]
+[ext_resource type="Texture2D" uid="uid://drlqn5isxo1dm" path="res://game/background/art/towel.png" id="2_8sumk"]
+[ext_resource type="Texture2D" uid="uid://lpaq82t1dfes" path="res://game/background/art/umbrela.png" id="3_y3q37"]
+[ext_resource type="PackedScene" uid="uid://dqmwhsd0wddon" path="res://game/torch/torch.tscn" id="4_ukgjx"]
+
+[node name="Background_3" type="Control"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.0
+offset_top = -349.0
+offset_right = 1379.1614
+offset_bottom = 796.00977
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.60409635, 0.6096018)
+texture = ExtResource("1_h41hi")
+
+[node name="Towel" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(636, 602)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_8sumk")
+
+[node name="Umbrela" type="Sprite2D" parent="."]
+position = Vector2(794.00006, 593)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+
+[node name="Umbrela8" type="Sprite2D" parent="."]
+position = Vector2(687, 697)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+flip_h = true
+
+[node name="Umbrela9" type="Sprite2D" parent="."]
+position = Vector2(864, 682)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+
+[node name="Towel4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(952.125, 348.31992)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_8sumk")
+
+[node name="Umbrela3" type="Sprite2D" parent="."]
+position = Vector2(1123.3826, 397.16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+
+[node name="Umbrela6" type="Sprite2D" parent="."]
+position = Vector2(649, 319)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+
+[node name="Umbrela7" type="Sprite2D" parent="."]
+position = Vector2(574, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+flip_h = true
+
+[node name="Towel6" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(881.125, 85.31998)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8sumk")
+
+[node name="Umbrela5" type="Sprite2D" parent="."]
+position = Vector2(964, 121)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(20.515, -164.82)
+
+[node name="Towel7" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(493.8, 37.200012)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8sumk")
+
+[node name="Towel9" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(625, 271.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_8sumk")
+
+[node name="Towel8" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(554, 82.72003)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8sumk")
+
+[node name="Towel2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(175.90503, 153.4025)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8sumk")
+
+[node name="Towel3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(219.63501, 217.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8sumk")
+
+[node name="Umbrela2" type="Sprite2D" parent="."]
+position = Vector2(38.635002, 126.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(-23.27, -167.435)
+flip_h = true
+
+[node name="Umbrela4" type="Sprite2D" parent="."]
+position = Vector2(273.635, 179.4675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_y3q37")
+offset = Vector2(-23.27, -167.435)
+
+[node name="Torch" parent="." instance=ExtResource("4_ukgjx")]
+position = Vector2(93.00001, 610.00006)
+rotation = -0.07853982
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Torch2" parent="." instance=ExtResource("4_ukgjx")]
+position = Vector2(984.00006, 276)
+rotation = -0.14835298

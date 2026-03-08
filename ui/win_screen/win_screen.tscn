@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcy7e2ejcx23e"]
+[gd_scene load_steps=6 format=3 uid="uid://bcy7e2ejcx23e"]
 
 [ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_dcw1d"]
 [ext_resource type="Script" uid="uid://blrmfmgth6aq" path="res://ui/win_screen/win_screen.gd" id="1_vii5q"]
+[ext_resource type="Texture2D" uid="uid://c6kll6uvn633x" path="res://ui/win_screen/art/BananaLogo.png" id="3_oklgd"]
+[ext_resource type="PackedScene" uid="uid://nmuiot7pimcr" path="res://game/background/background_menu.tscn" id="3_tcstv"]
+[ext_resource type="Texture2D" uid="uid://d0nm1jrhfilyy" path="res://ui/win_screen/art/2B4Sz71.png" id="4_vy4dh"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -13,6 +16,9 @@ grow_vertical = 2
 theme = ExtResource("1_dcw1d")
 script = ExtResource("1_vii5q")
 
+[node name="Background_Menu" parent="." instance=ExtResource("3_tcstv")]
+layout_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -20,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5882353)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,8 +45,7 @@ alignment = 1
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "CONGRATULATIONS!
-YOU COMPLETED
-PENGUINS OF THE CARIBBEAN"
+YOU COMPLETED"
 horizontal_alignment = 1
 
 [node name="Fill" type="Label" parent="VBoxContainer"]
@@ -51,13 +56,25 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Your total points are:"
 horizontal_alignment = 1
+autowrap_mode = 1
 
 [node name="LostPenguins" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "You lost: "
+text = "\"No penguins were harmed during this game. You're awesome!\""
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Fill2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "This is all we prepared for this Gamejam!
+We hope you liked it!"
+horizontal_alignment = 1
+
+[node name="Fill3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
 
@@ -69,7 +86,92 @@ text = "Try again"
 layout_mode = 2
 text = "Quit"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -886.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Team from Spain 💘
+
+Programmers: 
+- Lolmaniaco
+- Guturu
+
+Art:
+- Piu"
+
+[node name="Fill" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MiniJameGam" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MiniJameGamLogo" type="TextureRect" parent="MiniJameGam"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 373.0
+offset_right = 1485.0
+offset_bottom = 919.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_vy4dh")
+
+[node name="BananaVan" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BananaVanLogo" type="TextureRect" parent="BananaVan"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = 193.0
+offset_right = -726.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("3_oklgd")
+
+[node name="Label" type="Label" parent="BananaVan"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -510.5
+offset_top = 261.5
+offset_right = -289.5
+offset_bottom = 296.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BananaVan Studio"
 
 [connection signal="pressed" from="VBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

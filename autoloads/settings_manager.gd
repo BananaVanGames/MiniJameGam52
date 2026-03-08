@@ -94,7 +94,7 @@ func apply_video_settings(video_values: Dictionary):
 	)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, v["borderless"])
 	DisplayServer.window_set_size(v["resolution"])
-	print("v['fullscreen]: ", v["fullscreen"])
+
 
 func apply_audio_settings(audio_values: Dictionary):
 	audio_settings = audio_values

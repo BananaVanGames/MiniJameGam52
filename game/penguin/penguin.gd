@@ -158,8 +158,9 @@ func move_to() -> void:
 
 
 func penguin_death() -> void:
+	GameHandler.add_lost_penguin()
 	animated_sprite_2d.play("dead")
-	if randi_range(1, 10) == 1:
+	if randf_range(0, 1) < 0.25:
 		death_sound.stream = FAHHH_SOUND
 	else:
 		death_sound.stream = DEATH_SOUND
@@ -202,7 +203,7 @@ func _pick_random_direction() -> void:
 	var pos := global_position
 	var s := _screen_rect.size
 	var angle := randf() * TAU
-	var random_dir := Vector2(cos(angle), sin(angle))  # always valid unit vector
+	var random_dir := Vector2(cos(angle), sin(angle)) # always valid unit vector
 
 	var near_edge := (
 		pos.x < margin or pos.x > s.x - margin
@@ -260,6 +261,7 @@ func _on_arrived_at_platform() -> void:
 		await animated_sprite_2d.animation_finished
 		queue_free()
 
+
 func _set_danger_state(fill: StyleBoxFlat) -> void:
 	fill.bg_color = COLOR_DANGER
 
@@ -313,7 +315,6 @@ func _check_death() -> void:
 		dir_timer.stop()
 		temp_timer.stop()
 
-		GameHandler.add_lost_penguin()
 		penguin_death()
 
 		await animated_sprite_2d.animation_finished

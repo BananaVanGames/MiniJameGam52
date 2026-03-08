@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://c1ok4ygfchn4w" path="res://ui/main_menu/main_menu.gd" id="1_3shxk"]
 [ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_u184e"]
 [ext_resource type="Script" uid="uid://dktk5ci43anul" path="res://ui/main_menu/video.gd" id="2_bws42"]
-[ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background.tscn" id="2_i5wg5"]
 [ext_resource type="Script" uid="uid://ct4a0i2q4fuy3" path="res://ui/main_menu/audio.gd" id="3_3f7m4"]
+[ext_resource type="PackedScene" uid="uid://nmuiot7pimcr" path="res://game/background/background_menu.tscn" id="3_u184e"]
 [ext_resource type="PackedScene" uid="uid://dbdrco7jv3grm" path="res://ui/menu_penguin/menu_penguin.tscn" id="5_3c04x"]
 [ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="6_joh67"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "back_button", "scoreboard_button", "settings_button", "video_button", "audio_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "back_button", "settings_button", "video_button", "audio_button")]
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
@@ -23,16 +23,12 @@ main_settings = NodePath("Settings")
 video_settings = NodePath("Video")
 audio_settings = NodePath("Audio")
 back_button = NodePath("Back")
-scoreboard_button = NodePath("")
 settings_button = NodePath("Menu/Control3/Settings")
 video_button = NodePath("Settings/Control/Video")
 audio_button = NodePath("Settings/Control2/Audio")
 
-[node name="BeachShaderTest" parent="." instance=ExtResource("2_i5wg5")]
-y_sort_enabled = true
+[node name="Background_Menu" parent="." instance=ExtResource("3_u184e")]
 layout_mode = 1
-offset_top = -2.0
-offset_bottom = -2.0
 
 [node name="Menu" type="VBoxContainer" parent="."]
 texture_filter = 1
@@ -308,7 +304,7 @@ position = Vector2(375, 623)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Whistle" parent="CanvasLayer" instance=ExtResource("6_joh67")]
-position = Vector2(961, 546)
+position = Vector2(1044, 571)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

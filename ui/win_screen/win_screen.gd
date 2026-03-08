@@ -1,6 +1,5 @@
 extends Control
 
-const MAIN_MENU = preload("uid://6n3h48sf0yhd")
 const WHISTLE_1 = preload("uid://dwu1j4aacffsm")
 const WHISTLE_2 = preload("uid://ddafy6ighwblf")
 const WHISTLE_3 = preload("uid://obcflc0rqhme")
@@ -24,11 +23,11 @@ func _on_quit_pressed() -> void:
 	audio_stream_player.stream = PUP
 	audio_stream_player.play()
 	await get_tree().create_timer(0.2).timeout
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	SceneLoader.load_scene("uid://6n3h48sf0yhd")
 
 
 func _on_try_again_pressed() -> void:
 	audio_stream_player.stream = WHISTLE_SOUNDS.pick_random()
 	audio_stream_player.play()
 	await get_tree().create_timer(0.2).timeout
-	get_tree().quit()
+	SceneLoader.load_scene("uid://7oew5x4hq6kt")
