@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcl8jvucfm2rc"]
+
+[ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_54767"]
+[ext_resource type="Script" uid="uid://cywa146ejq482" path="res://ui/score/score.gd" id="2_nw6q3"]
+[ext_resource type="Texture2D" uid="uid://cybwde74avqoc" path="res://ui/score/art/termometer_global.png" id="3_81wco"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+theme = ExtResource("1_54767")
+script = ExtResource("2_nw6q3")
+
+[node name="TermometerGlobal" type="Sprite2D" parent="."]
+position = Vector2(57.875004, 33.25)
+scale = Vector2(0.4478022, 0.57456136)
+texture = ExtResource("3_81wco")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 111.0
+offset_bottom = 54.0
+horizontal_alignment = 1
+vertical_alignment = 1

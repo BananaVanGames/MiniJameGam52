@@ -160,4 +160,4 @@ func _on_quit_pressed() -> void:
 func _on_start_pressed() -> void:
 	whistle.blow_whistle()
 	await get_tree().create_timer(1.5).timeout
-	SceneLoader.load_scene("uid://7oew5x4hq6kt")
+	SceneLoader.load_scene("uid://bdbxg1pft4grf")

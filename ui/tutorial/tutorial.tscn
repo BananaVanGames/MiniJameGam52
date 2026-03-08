@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://datdn4i13p4u0"]
 
 [ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_104xa"]
-[ext_resource type="Texture2D" uid="uid://buwmdmmfk3u15" path="res://ui/tutorial/art/info1.png" id="1_tkdws"]
 [ext_resource type="Script" uid="uid://d21w5oacl2h7t" path="res://ui/tutorial/tutorial.gd" id="2_xip1d"]
+[ext_resource type="Texture2D" uid="uid://bwtksiuhfurj3" path="res://ui/tutorial/art/infographic.png" id="3_104xa"]
 
 [sub_resource type="Theme" id="Theme_sqcm7"]
 
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_tkdws")
+texture = ExtResource("3_104xa")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]

@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://7oew5x4hq6kt"]
+[gd_scene load_steps=10 format=3 uid="uid://bdbxg1pft4grf"]
 
-[ext_resource type="Script" uid="uid://badmcclonhj7b" path="res://game/level.gd" id="1_3gsf4"]
-[ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background_1.tscn" id="2_hjv22"]
+[ext_resource type="Script" path="res://game/level.gd" id="1_1565f"]
+[ext_resource type="PackedScene" uid="uid://dnc43eejd82f7" path="res://game/background/background.tscn" id="2_hjv22"]
 [ext_resource type="PackedScene" uid="uid://bsxnvp3ye6gur" path="res://game/freezing_platform/platform.tscn" id="3_1565f"]
 [ext_resource type="PackedScene" uid="uid://c0vvklnvontax" path="res://game/penguin_spawner/penguin_spawner.tscn" id="4_ogdhh"]
 [ext_resource type="AudioStream" uid="uid://cuc8bor1dge2r" path="res://sound/music/penguin music.ogg" id="5_a2xg8"]
 [ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="6_a4abk"]
 [ext_resource type="PackedScene" uid="uid://dx44rq4bqg8oj" path="res://ui/pause_menu/pause_menu.tscn" id="7_5c5qw"]
+[ext_resource type="PackedScene" uid="uid://bcl8jvucfm2rc" path="res://ui/score/score.tscn" id="8_hjv22"]
+[ext_resource type="PackedScene" uid="uid://datdn4i13p4u0" path="res://ui/tutorial/tutorial.tscn" id="9_1565f"]
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_3gsf4")
+script = ExtResource("1_1565f")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -41,6 +43,10 @@ position = Vector2(1037, 572)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_5c5qw")]
 visible = false
+
+[node name="Score" parent="CanvasLayer" instance=ExtResource("8_hjv22")]
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("9_1565f")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(327, 298)
