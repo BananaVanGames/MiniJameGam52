@@ -31,6 +31,7 @@ var flip = {
 @onready var back: Button = $Back
 @onready var menu_penguin: MenuPenguin = $MenuPenguin
 @onready var whistle: Node2D = $CanvasLayer/Whistle
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready():
@@ -121,7 +122,8 @@ func _update_back_button() -> void:
 
 
 func _navigate_to(panel: Control) -> void:
-	whistle.blow_whistle()
+	audio_stream_player.stream = load("res://ui/main_menu/pip.ogg")
+	audio_stream_player.play()
 	if current_panel:
 		nav_stack.append(current_panel)
 		current_panel.visible = false
@@ -132,7 +134,8 @@ func _navigate_to(panel: Control) -> void:
 
 
 func _on_back_pressed() -> bool:
-	whistle.blow_whistle()
+	audio_stream_player.stream = load("res://ui/main_menu/pup.ogg")
+	audio_stream_player.play()
 	if nav_stack.is_empty():
 		return true
 

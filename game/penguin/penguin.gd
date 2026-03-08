@@ -45,7 +45,7 @@ var _is_idle: bool = false ## true while doing a random idle pause
 
 func _ready() -> void:
 	_screen_rect = get_viewport_rect()
-
+	temperature = (GameHandler.freezing_temp + GameHandler.max_temperature) / 2
 	temp_bar.min_value = 0
 	temp_bar.max_value = GameHandler.max_temperature
 	temp_bar.value = temperature
