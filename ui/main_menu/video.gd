@@ -14,6 +14,7 @@ var vsync: bool
 
 func _ready() -> void:
 	var resolutions = [
+		Vector2i(2560, 1440),
 		Vector2i(1920, 1080),
 		Vector2i(1600, 900),
 		Vector2i(1280, 720),
@@ -32,8 +33,7 @@ func _ready() -> void:
 
 
 func load_current_settings() -> void:
-	var mode = DisplayServer.window_get_mode()
-	fullscreen_check.button_pressed = mode == DisplayServer.WINDOW_MODE_FULLSCREEN
+	fullscreen_check.button_pressed = SettingsManager.video_settings["fullscreen"]
 	borderless_check.button_pressed = DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_BORDERLESS)
 	vsync_check.button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
 
@@ -43,14 +43,16 @@ func load_current_settings() -> void:
 		var parts = res_text.split("x")
 		if parts.size() == 2 and int(parts[0]) == window_size.x and int(parts[1]) == window_size.y:
 			resolution_option.select(i)
+			resolution = Vector2i(int(parts[0]), int(parts[1]))
 			break
+
+	fullscreen = fullscreen_check.button_pressed
+	borderless = borderless_check.button_pressed
+	vsync = vsync_check.button_pressed
 
 
 func get_video_settings() -> Dictionary:
-	if entered_video:
-		return { "resolution": resolution, "fullscreen": fullscreen, "borderless": borderless, "vsync": vsync }
-	else:
-		return {}
+	return { "resolution": resolution, "fullscreen": fullscreen, "borderless": borderless, "vsync": vsync }
 
 
 func _on_resolution_selected(index: int):
@@ -58,6 +60,7 @@ func _on_resolution_selected(index: int):
 	var parts = text.split("x")
 	if parts.size() == 2:
 		resolution = Vector2i(int(parts[0]), int(parts[1]))
+		print("RESOLUTION: ", resolution)
 		DisplayServer.window_set_size(resolution)
 
 

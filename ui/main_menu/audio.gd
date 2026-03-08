@@ -8,9 +8,9 @@ const MAX_DB = 0.0
 @export var sfx_slider: HSlider
 
 var entered_audio: bool = false
-var master: float = 0
-var music: float = 0
-var sfx: float = 0
+var master: float
+var music: float
+var sfx: float
 
 
 func _ready():
@@ -23,9 +23,14 @@ func _ready():
 
 func get_audio_settings() -> Dictionary:
 	if entered_audio:
-		return { "master_volume": master, "music_volume": music, "sfx_volume": sfx }
+		return {
+			"master_volume": master,
+			"music_volume": music,
+			"sfx_volume": sfx,
+		}
 	else:
 		return {}
+
 
 func _sync_sliders():
 	master = _db_to_slider(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))

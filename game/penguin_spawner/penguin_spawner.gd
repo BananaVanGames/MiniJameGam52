@@ -27,17 +27,18 @@ func _ready() -> void:
 	_available_letters = LETTER_POOL.duplicate()
 	spawner_timer.wait_time = spawn_interval
 	get_parent().start_playing.connect(start_spawning)
+	GameHandler.start_level.connect(start_spawning)
 
 
 func _process(_delta: float) -> void:
 	if level_clear:
 		if get_tree().get_nodes_in_group("penguins").is_empty():
 			main_level.end_level()
-			remaining_penguins = -1
+			level_clear = false
 
 
 func start_spawning() -> void:
-	level_clear = false
+	
 	update_remaining_penguins()
 	spawner_timer.start()
 

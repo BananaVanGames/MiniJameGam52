@@ -1,5 +1,7 @@
 extends Control
 
+const MAIN_MENU = preload("uid://6n3h48sf0yhd")
+
 var hovered_button: Button = null
 var time: float = 0.0
 
@@ -49,13 +51,13 @@ func _on_any_button_mouse_exited(button) -> void:
 
 
 func _on_quit_pressed() -> void:
-	print("PRESIONADO2")
 	GameHandler.player_blows_whistle()
 	await get_tree().create_timer(1.5).timeout
-	get_tree().quit()
+	get_tree().set_pause(false)
+	visible = false
+	get_tree().change_scene_to_packed(MAIN_MENU)
 
 
 func _on_resume_pressed() -> void:
-	print("PRESIONADO")
 	visible = false
 	get_tree().paused = false

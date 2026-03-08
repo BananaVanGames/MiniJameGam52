@@ -13,6 +13,7 @@ y_sort_enabled = true
 script = ExtResource("1_sgg2w")
 
 [node name="BeachShaderTest" parent="." instance=ExtResource("2_e3oi6")]
+y_sort_enabled = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -28,6 +29,7 @@ z_index = -1
 position = Vector2(233, 339)
 
 [node name="PenguinSpawner" parent="." instance=ExtResource("2_s6k5d")]
+y_sort_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qo14e")

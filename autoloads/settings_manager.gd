@@ -3,10 +3,10 @@ extends Node
 const CONFIG_PATH := "user://settings.cfg"
 
 var default_video_settings := {
-	"resolution": Vector2i(1280, 720),
-	"fullscreen": false,
-	"borderless": false,
-	"vsync": true,
+	"resolution": Vector2i(1920, 1080),
+	"fullscreen": true,
+	"borderless": true,
+	"vsync": false,
 }
 
 var default_audio_settings := {
@@ -20,15 +20,30 @@ var audio_settings: Dictionary
 
 
 func _ready():
+	if not FileAccess.file_exists(CONFIG_PATH):
+		create_default_config()
 	load_settings()
+
+
+func create_default_config():
+	var config := ConfigFile.new()
+
+	for key in default_video_settings:
+		config.set_value("video", key, default_video_settings[key])
+
+	for key in default_audio_settings:
+		config.set_value("audio", key, default_audio_settings[key])
+
+	var err = config.save(CONFIG_PATH)
+	if err != OK:
+		push_error("No se pudo guardar settings.cfg")
 
 
 func save_settings(new_video: Dictionary, new_audio: Dictionary):
 	var config := ConfigFile.new()
 
-	print("VALUES OF VIDEO: ", new_video)
-	if new_video.is_empty():
-		new_video = video_settings
+	if new_video["resolution"] == Vector2i(0, 0):
+		new_video["resolution"] = video_settings["resolution"]
 
 	config.set_value("video", "resolution", new_video["resolution"])
 	config.set_value("video", "fullscreen", new_video["fullscreen"])
@@ -37,6 +52,7 @@ func save_settings(new_video: Dictionary, new_audio: Dictionary):
 
 	if new_audio.is_empty():
 		new_audio = audio_settings
+	print("VALUES OF AUDIO: ", audio_settings)
 
 	config.set_value("audio", "master_volume", new_audio["master_volume"])
 	config.set_value("audio", "music_volume", new_audio["master_volume"])
@@ -78,7 +94,7 @@ func apply_video_settings(video_values: Dictionary):
 	)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, v["borderless"])
 	DisplayServer.window_set_size(v["resolution"])
-
+	print("v['fullscreen]: ", v["fullscreen"])
 
 func apply_audio_settings(audio_values: Dictionary):
 	audio_settings = audio_values

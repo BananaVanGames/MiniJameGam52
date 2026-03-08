@@ -4,6 +4,7 @@ signal score_changed(new_score: int, max_score: int)
 signal whistle_blown()
 signal level_won
 signal level_lost
+signal start_level
 signal get_platform_positions(qtt_positions: int)
 
 var level_number: int = 1
@@ -43,10 +44,11 @@ func get_max_level_penguins() -> int:
 	return max_level_penguins
 
 
-func start_level() -> void:
+func reset_level_parameters() -> void:
 	lost_penguins = 0
 	score_points = 0
 	level_active = true
+	start_level.emit()
 	score_changed.emit(score_points, max_score_points)
 
 
@@ -54,9 +56,10 @@ func stop_level() -> void:
 	level_active = false
 
 
-## Load a level config dict — call before start_level()
+## Load a level config dict — call before reset_level_parameters()
 ## e.g. GameHandler.load_level(LevelData.LEVELS[1])
 func load_level(config: Dictionary) -> void:
+	print("LOADED: ", config)
 	level_number = config.get("level_number", 1)
 	max_score_points = config.get("max_score_points", 10)
 	max_screen_penguins = config.get("max_screen_penguins", 8)

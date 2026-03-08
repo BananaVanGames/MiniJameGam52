@@ -10,10 +10,9 @@ const END_SCREEN = preload("uid://ctotp755d0e3a")
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameHandler.load_level(LevelData.LEVELS[1])
-	GameHandler.start_level()
+	GameHandler.reset_level_parameters()
 	var intro = LEVEL_INTRO.instantiate()
 	canvas_layer.add_child(intro)
 	intro.intro_finished.connect(on_intro_finished)
