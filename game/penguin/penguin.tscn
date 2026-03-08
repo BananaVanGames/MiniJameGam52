@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://d0qmhsecy1gnq"]
+[gd_scene load_steps=69 format=3 uid="uid://d0qmhsecy1gnq"]
 
 [ext_resource type="Script" uid="uid://dw1ri84bv1px" path="res://game/penguin/penguin.gd" id="1_wmdo7"]
 [ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="2_0cu47"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://c6kddrqibl04t" path="res://game/penguin/art/ded26.png" id="27_efexu"]
 [ext_resource type="Texture2D" uid="uid://clil0whwx8lhm" path="res://game/penguin/art/fuck-ice01.png" id="27_h0sof"]
 [ext_resource type="Texture2D" uid="uid://d1fhaahglaw1y" path="res://game/penguin/art/ded27.png" id="28_2w1m8"]
+[ext_resource type="AudioStream" uid="uid://c2lnaek6benuk" path="res://sound/sfx/penguins/murit.ogg" id="59_xj2nf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_weu30"]
 animations = [{
@@ -662,11 +663,14 @@ shape = SubResource("CircleShape2D_r62jp")
 
 [node name="TempTimer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("59_xj2nf")
+volume_db = -15.0
+bus = &"SFX"
 
-[node name="Tecla-sonido" type="AudioStreamPlayer" parent="."]
+[node name="KeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_13136")
-volume_db = -10.0
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

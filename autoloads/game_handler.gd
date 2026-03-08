@@ -8,7 +8,6 @@ signal start_level
 signal get_platform_positions(qtt_positions: int)
 signal penguins_delivered()
 
-
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
 var max_screen_penguins: int = 8 ## max penguins alive at once
@@ -16,9 +15,11 @@ var max_level_penguins: int = 20 ## max penguins per level
 var max_temperature: int = 10 ## temperature at which a penguin dies
 var freezing_temp: int = 2 ## acceptable temp range low  (inclusive)
 var auto_whistle_interval: float = 15.0 ## seconds between automatic whistles
-var lost_penguins: int = 0 ## Number of penguins that were lost per level
 
+var total_score_points: int = 0
 var score_points: int = 0
+var total_lost_penguins: int = 0
+var lost_penguins: int = 0
 var level_active: bool = false
 
 var random_platform_positions: Array = []
@@ -47,10 +48,12 @@ func get_max_level_penguins() -> int:
 
 
 func reset_level_parameters() -> void:
+	total_score_points += score_points
+	total_lost_penguins += lost_penguins
+
 	lost_penguins = 0
 	score_points = 0
-	level_active = true
-	start_level.emit()
+	level_active = false
 	score_changed.emit(score_points, max_score_points)
 
 

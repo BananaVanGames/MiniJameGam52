@@ -23,7 +23,6 @@ var flip = {
 }
 
 @onready var start: Button = $Menu/Control/Start
-@onready var scoreboard: Button = $Menu/Control2/Scoreboard
 @onready var settings: Button = $Menu/Control3/Settings
 @onready var quit: Button = $Menu/Control4/Quit
 @onready var video: Button = $Settings/Control/Video
@@ -33,6 +32,8 @@ var flip = {
 @onready var whistle: Node2D = $CanvasLayer/Whistle
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+const PIP = preload("uid://bg66rd8xs1bie")
+const PUP = preload("uid://xvk4jkqkwkth")
 
 func _ready():
 	current_panel = menu
@@ -45,7 +46,6 @@ func _ready():
 	audio_button.pressed.connect(_navigate_to.bind(audio_settings))
 
 	start.mouse_entered.connect(_on_any_button_mouse_entered.bind(start))
-	scoreboard.mouse_entered.connect(_on_any_button_mouse_entered.bind(scoreboard))
 	settings.mouse_entered.connect(_on_any_button_mouse_entered.bind(settings))
 	quit.mouse_entered.connect(_on_any_button_mouse_entered.bind(quit))
 	video.mouse_entered.connect(_on_any_button_mouse_entered.bind(video))
@@ -53,7 +53,6 @@ func _ready():
 	back.mouse_entered.connect(_on_any_button_mouse_entered.bind(back))
 
 	start.mouse_exited.connect(_on_any_button_mouse_exited.bind(start))
-	scoreboard.mouse_exited.connect(_on_any_button_mouse_exited.bind(scoreboard))
 	settings.mouse_exited.connect(_on_any_button_mouse_exited.bind(settings))
 	quit.mouse_exited.connect(_on_any_button_mouse_exited.bind(quit))
 	video.mouse_exited.connect(_on_any_button_mouse_exited.bind(video))
@@ -122,7 +121,7 @@ func _update_back_button() -> void:
 
 
 func _navigate_to(panel: Control) -> void:
-	audio_stream_player.stream = load("res://ui/main_menu/pip.ogg")
+	audio_stream_player.stream = PIP
 	audio_stream_player.play()
 	if current_panel:
 		nav_stack.append(current_panel)
@@ -134,7 +133,7 @@ func _navigate_to(panel: Control) -> void:
 
 
 func _on_back_pressed() -> bool:
-	audio_stream_player.stream = load("res://ui/main_menu/pup.ogg")
+	audio_stream_player.stream = PUP
 	audio_stream_player.play()
 	if nav_stack.is_empty():
 		return true
@@ -152,7 +151,8 @@ func _on_back_pressed() -> bool:
 
 
 func _on_quit_pressed() -> void:
-	whistle.blow_whistle()
+	audio_stream_player.stream = PUP
+	audio_stream_player.play()
 	await get_tree().create_timer(1.5).timeout
 	get_tree().quit()
 
@@ -161,7 +161,3 @@ func _on_start_pressed() -> void:
 	whistle.blow_whistle()
 	await get_tree().create_timer(1.5).timeout
 	SceneLoader.load_scene("uid://7oew5x4hq6kt")
-
-
-func _on_scoreboard_pressed() -> void:
-	whistle.blow_whistle()

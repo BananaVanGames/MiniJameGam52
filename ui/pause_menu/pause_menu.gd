@@ -1,10 +1,13 @@
 extends Control
 
 const MAIN_MENU = preload("uid://6n3h48sf0yhd")
+const PIP = preload("uid://bg66rd8xs1bie")
+const PUP = preload("uid://xvk4jkqkwkth")
 
 var hovered_button: Button = null
 var time: float = 0.0
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var resume: Button = $Menu/Control/Resume
 @onready var quit: Button = $Menu/Control4/Quit
 
@@ -51,13 +54,16 @@ func _on_any_button_mouse_exited(button) -> void:
 
 
 func _on_quit_pressed() -> void:
-	GameHandler.player_blows_whistle()
-	await get_tree().create_timer(1.5).timeout
+	audio_stream_player.stream = PUP
+	audio_stream_player.play()
+	await get_tree().create_timer(0.2).timeout
 	get_tree().set_pause(false)
 	visible = false
 	get_tree().change_scene_to_packed(MAIN_MENU)
 
 
 func _on_resume_pressed() -> void:
+	audio_stream_player.stream = PIP
+	audio_stream_player.play()
 	visible = false
 	get_tree().paused = false

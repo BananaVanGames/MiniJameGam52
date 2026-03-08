@@ -189,8 +189,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_kb7ma")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, -27)
 sprite_frames = SubResource("SpriteFrames_qf2x0")
 animation = &"blow"
+offset = Vector2(-38.615, 22.2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -210,4 +212,6 @@ offset_bottom = -50.000008
 scale = Vector2(2.9016986, 2.9016986)
 
 [connection signal="timeout" from="GlobalTimer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

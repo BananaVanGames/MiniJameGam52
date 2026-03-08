@@ -10,7 +10,7 @@ enum steps {
 }
 
 @export var initial_time: float = 0.75
-@export var step_time: float = 0.5
+@export var step_time: float = 0.75
 
 var current_step: steps = steps.READY
 var color_rect_opacity = [1, 1, 0.8, 0.4, 0]
@@ -39,5 +39,6 @@ func _on_timer_timeout() -> void:
 		color_rect.color.a = color_rect_opacity[step]
 		timer.start(step_time)
 	else:
+		await get_tree().create_timer(1).timeout
 		intro_finished.emit()
 		queue_free()

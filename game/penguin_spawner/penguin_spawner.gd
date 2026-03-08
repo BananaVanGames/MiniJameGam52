@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 
 
 func start_spawning() -> void:
-	
+	GameHandler.level_active = true
 	update_remaining_penguins()
 	spawner_timer.start()
 

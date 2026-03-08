@@ -38,4 +38,5 @@ func _on_next_pressed() -> void:
 	else:
 		GameHandler.load_level(LevelData.LEVELS[GameHandler.level_number])
 		GameHandler.reset_level_parameters()
+		GameHandler.start_level.emit()
 	queue_free()

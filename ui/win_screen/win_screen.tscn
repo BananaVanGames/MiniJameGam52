@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcy7e2ejcx23e"]
+[gd_scene load_steps=3 format=3 uid="uid://bcy7e2ejcx23e"]
 
+[ext_resource type="Theme" uid="uid://caff2b1h3e3hy" path="res://ui/main_menu/menus_style.tres" id="1_dcw1d"]
 [ext_resource type="Script" uid="uid://blrmfmgth6aq" path="res://ui/win_screen/win_screen.gd" id="1_vii5q"]
 
 [node name="WinScreen" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_dcw1d")
 script = ExtResource("1_vii5q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -45,26 +47,29 @@ horizontal_alignment = 1
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Level" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "You reached level 1"
-
 [node name="Points" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Points earned: 20/10"
+text = "Your total points are:"
+horizontal_alignment = 1
 
 [node name="LostPenguins" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Lost Penguins: 5"
+text = "You lost: "
+horizontal_alignment = 1
 
 [node name="Fill2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Next" type="Button" parent="VBoxContainer"]
+[node name="Try Again" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Next level"
+text = "Try again"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

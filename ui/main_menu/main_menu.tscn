@@ -23,7 +23,7 @@ main_settings = NodePath("Settings")
 video_settings = NodePath("Video")
 audio_settings = NodePath("Audio")
 back_button = NodePath("Back")
-scoreboard_button = NodePath("Menu/Control2/Scoreboard")
+scoreboard_button = NodePath("")
 settings_button = NodePath("Menu/Control3/Settings")
 video_button = NodePath("Settings/Control/Video")
 audio_button = NodePath("Settings/Control2/Audio")
@@ -63,22 +63,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 36)
 text = "Start"
-
-[node name="Control2" type="Control" parent="Menu"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-
-[node name="Scoreboard" type="Button" parent="Menu/Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(150, 36)
-text = "Scoreboard"
 
 [node name="Control3" type="Control" parent="Menu"]
 layout_mode = 2
@@ -304,6 +288,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="Back" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,5 +313,4 @@ position = Vector2(961, 546)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Menu/Control/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Control2/Scoreboard" to="." method="_on_scoreboard_pressed"]
 [connection signal="pressed" from="Menu/Control4/Quit" to="." method="_on_quit_pressed"]

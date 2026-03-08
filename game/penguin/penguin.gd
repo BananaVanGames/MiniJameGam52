@@ -5,6 +5,8 @@ const COLOR_COLD = Color("00aeff")
 const COLOR_MEDIUM = Color("ffd264")
 
 const GOING_PLATFORM_SPEED = 3
+const FAHHH_SOUND = preload("uid://cl74wf4i1bb5o")
+const DEATH_SOUND = preload("uid://c2lnaek6benuk")
 
 @export var min_temp: int = -3
 @export var max_temp: int = 10
@@ -38,10 +40,11 @@ var _is_idle: bool = false ## true while doing a random idle pause
 @onready var temp_bar: ProgressBar = $TempBar
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var tecla: Sprite2D = $Tecla
-@onready var tecla_sonido: AudioStreamPlayer = $"Tecla-sonido"
 @onready var termometer: Sprite2D = $Termometer
 @onready var termometer_red: AnimatedSprite2D = $TermometerRed
 @onready var icecube: Sprite2D = $Icecube
+@onready var death_sound: AudioStreamPlayer = $DeathSound
+@onready var key_sound: AudioStreamPlayer = $KeySound
 
 
 func _ready() -> void:
@@ -113,7 +116,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if OS.get_keycode_string(event.keycode).to_upper() == letter:
 			tecla.texture = tex_tecla_press
-			tecla_sonido.play()
+			key_sound.play()
 			await get_tree().create_timer(0.12).timeout
 			tecla.texture = tex_tecla
 			cool_down(1)
@@ -148,6 +151,15 @@ func move_to() -> void:
 	dir_timer.stop()
 	_move_dir = (_platform_target - global_position).normalized()
 	_play_walk()
+
+
+func penguin_death() -> void:
+	animated_sprite_2d.play("dead")
+	if randi_range(1, 10) == 1:
+		death_sound.stream = FAHHH_SOUND
+	else:
+		death_sound.stream = DEATH_SOUND
+	death_sound.play()
 
 
 func _on_temp_tick() -> void:
@@ -225,7 +237,7 @@ func _on_arrived_at_platform() -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 	else:
-		animated_sprite_2d.play("dead")
+		penguin_death()
 		await animated_sprite_2d.animation_finished
 		queue_free()
 
@@ -282,7 +294,7 @@ func _check_death() -> void:
 		temp_timer.stop()
 
 		GameHandler.add_lost_penguin()
-		animated_sprite_2d.play("dead")
+		penguin_death()
 
 		await animated_sprite_2d.animation_finished
 		queue_free()

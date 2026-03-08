@@ -68,5 +68,7 @@ grow_vertical = 2
 pivot_offset = Vector2(150, 36)
 text = "Quit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="Menu/Control/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Menu/Control4/Quit" to="." method="_on_quit_pressed"]
