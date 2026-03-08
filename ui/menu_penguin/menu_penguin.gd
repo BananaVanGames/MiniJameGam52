@@ -5,7 +5,6 @@ extends Node2D
 
 
 func _physics_process(_delta: float) -> void:
-	handle_penguin_z_index()
 	handle_penguin_animations()
 
 
@@ -19,12 +18,3 @@ func handle_penguin_animations() -> void:
 
 func flip_penguin_to(state: bool) -> void:
 	animated_sprite_2d.flip_h = state
-
-
-func handle_penguin_z_index() -> void:
-	if global_position.y < 246:
-		z_index = 0
-	elif global_position.y > 285 and global_position.y < 617:
-		z_index = 2
-	else:
-		z_index = 4

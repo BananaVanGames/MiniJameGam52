@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca5qe1xse6jfb"
-path.s3tc="res://.godot/imported/slide-2.png-9602dbd81c9a8d8458ea20ba87091234.s3tc.ctex"
+uid="uid://dwrk355yyjrk7"
+path.s3tc="res://.godot/imported/run06.png-ed517e14bf1f00320ea62aa3ca8b0d65.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/penguin/art/slide-2.png"
-dest_files=["res://.godot/imported/slide-2.png-9602dbd81c9a8d8458ea20ba87091234.s3tc.ctex"]
+source_file="res://game/penguin/art/run06.png"
+dest_files=["res://.godot/imported/run06.png-ed517e14bf1f00320ea62aa3ca8b0d65.s3tc.ctex"]
 
 [params]
 

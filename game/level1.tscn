@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsxnvp3ye6gur" path="res://game/freezing_platform/platform.tscn" id="7_6fphe"]
 
 [node name="Level1" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_sgg2w")
 
 [node name="BeachShaderTest" parent="." instance=ExtResource("2_e3oi6")]
@@ -22,6 +23,10 @@ offset_bottom = 643.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Platform" parent="." instance=ExtResource("7_6fphe")]
+z_index = -1
+position = Vector2(233, 339)
+
 [node name="PenguinSpawner" parent="." instance=ExtResource("2_s6k5d")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -31,10 +36,7 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Whistle" parent="CanvasLayer" instance=ExtResource("3_sgg2w")]
-position = Vector2(1030, 562)
-
-[node name="Platform" parent="CanvasLayer" instance=ExtResource("7_6fphe")]
-position = Vector2(233, 339)
+position = Vector2(951, 558)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_44xb3")]
 visible = false

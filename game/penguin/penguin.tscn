@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d0qmhsecy1gnq"]
+[gd_scene load_steps=41 format=3 uid="uid://d0qmhsecy1gnq"]
 
 [ext_resource type="Script" uid="uid://dw1ri84bv1px" path="res://game/penguin/penguin.gd" id="1_wmdo7"]
 [ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="2_0cu47"]
@@ -24,12 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://dxb6vux3b0e2f" path="res://game/penguin/art/idle111.png" id="12_jooyy"]
 [ext_resource type="Texture2D" uid="uid://c8gnquc4lylk1" path="res://game/penguin/art/termometer_hot_1 (1).png" id="12_r62jp"]
 [ext_resource type="Texture2D" uid="uid://btxu6dqtaqxqb" path="res://game/penguin/art/termometer_hot_1 (2).png" id="13_2ra44"]
-[ext_resource type="Texture2D" uid="uid://ce8yvh3rs6ops" path="res://game/penguin/art/slide-1.png" id="13_sd4ww"]
-[ext_resource type="Texture2D" uid="uid://ca5qe1xse6jfb" path="res://game/penguin/art/slide-2.png" id="14_8kc0d"]
+[ext_resource type="Texture2D" uid="uid://b6dlk1c3sa0p6" path="res://game/penguin/art/run01.png" id="13_83yqy"]
+[ext_resource type="Texture2D" uid="uid://cgqi3eck8wnj0" path="res://game/penguin/art/run02.png" id="14_51qgs"]
 [ext_resource type="Texture2D" uid="uid://dlp04i7kra830" path="res://game/penguin/art/termometer_hot_1 (3).png" id="14_t2gtx"]
-[ext_resource type="Texture2D" uid="uid://cqfy4u6po1i0b" path="res://game/penguin/art/slide-3.png" id="15_83yqy"]
 [ext_resource type="Texture2D" uid="uid://bftma3h05xnqs" path="res://game/penguin/art/termometer_hot_1 (4).png" id="15_c0ad2"]
-[ext_resource type="Texture2D" uid="uid://cvaq3mbxy4caq" path="res://game/penguin/art/slide-4.png" id="16_51qgs"]
+[ext_resource type="Texture2D" uid="uid://dorooie78alky" path="res://game/penguin/art/run03.png" id="15_wsbnt"]
+[ext_resource type="Texture2D" uid="uid://c545uoorg0v0g" path="res://game/penguin/art/run04.png" id="16_jooyy"]
+[ext_resource type="Texture2D" uid="uid://bkt8exocec14c" path="res://game/penguin/art/run05.png" id="17_weu30"]
+[ext_resource type="Texture2D" uid="uid://dwrk355yyjrk7" path="res://game/penguin/art/run06.png" id="18_e4ip4"]
 [ext_resource type="Texture2D" uid="uid://clil0whwx8lhm" path="res://game/penguin/art/fuck-ice01.png" id="27_h0sof"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_weu30"]
@@ -221,43 +223,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_sd4ww")
+"texture": ExtResource("13_83yqy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_sd4ww")
+"texture": ExtResource("13_83yqy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_sd4ww")
+"texture": ExtResource("14_51qgs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_8kc0d")
+"texture": ExtResource("14_51qgs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_8kc0d")
+"texture": ExtResource("15_wsbnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_8kc0d")
+"texture": ExtResource("15_wsbnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_83yqy")
+"texture": ExtResource("16_jooyy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_83yqy")
+"texture": ExtResource("16_jooyy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_83yqy")
+"texture": ExtResource("17_weu30")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_51qgs")
+"texture": ExtResource("17_weu30")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_51qgs")
+"texture": ExtResource("18_e4ip4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_51qgs")
+"texture": ExtResource("18_e4ip4")
 }],
 "loop": true,
-"name": &"slide",
+"name": &"run",
 "speed": 24.0
 }, {
 "frames": [{
@@ -392,7 +394,7 @@ script = ExtResource("1_wmdo7")
 position = Vector2(-2, -39)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_weu30")
-animation = &"slide"
+animation = &"walking"
 
 [node name="Tecla" type="Sprite2D" parent="."]
 position = Vector2(0.625, 24)
@@ -446,7 +448,6 @@ libraries = {
 }
 
 [node name="Icecube" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(7.0000005, -24)
-scale = Vector2(0.921875, 0.745)
+position = Vector2(0, -36)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_h0sof")

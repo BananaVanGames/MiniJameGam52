@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="6_joh67"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("menu", "main_settings", "video_settings", "audio_settings", "back_button", "scoreboard_button", "settings_button", "video_button", "audio_button")]
+y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ video_button = NodePath("Settings/Control/Video")
 audio_button = NodePath("Settings/Control2/Audio")
 
 [node name="BeachShaderTest" parent="." instance=ExtResource("2_i5wg5")]
+y_sort_enabled = true
 layout_mode = 1
 offset_top = -2.0
 offset_bottom = -2.0
@@ -316,12 +318,12 @@ pivot_offset = Vector2(100, 50)
 text = "Back"
 
 [node name="MenuPenguin" parent="." instance=ExtResource("5_3c04x")]
-position = Vector2(910, 545)
+position = Vector2(375, 623)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Whistle" parent="CanvasLayer" instance=ExtResource("6_joh67")]
-position = Vector2(1056, 541)
+position = Vector2(961, 546)
 
 [connection signal="pressed" from="Menu/Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Control2/Scoreboard" to="." method="_on_scoreboard_pressed"]

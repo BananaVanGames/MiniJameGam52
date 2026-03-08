@@ -2,8 +2,8 @@ extends Node
 
 signal score_changed(new_score: int, max_score: int)
 signal whistle_blown()
-signal level_won()
-signal level_lost()
+signal level_won
+signal level_lost
 signal get_platform_positions(qtt_positions: int)
 
 var level_number: int = 1
@@ -14,14 +14,15 @@ var max_temperature: int = 10 ## temperature at which a penguin dies
 var freezing_temp: int = 2 ## acceptable temp range low  (inclusive)
 var auto_whistle_interval: float = 15.0 ## seconds between automatic whistles
 var lost_penguins: int = 0 ## Number of penguins that were lost per level
-var _penguins_en_route: int = 0
-var _penguins_arrived: int = 0
-var _frozen_arrived: int = 0
 
 var score_points: int = 0
 var level_active: bool = false
 
 var random_platform_positions: Array = []
+
+var _penguins_en_route: int = 0
+var _penguins_arrived: int = 0
+var _frozen_arrived: int = 0
 
 
 func _process(_delta: float) -> void:
@@ -82,13 +83,14 @@ func send_penguins_to_platform() -> void:
 		return
 
 	_penguins_en_route = qtt_penguins
-	_penguins_arrived  = 0
-	_frozen_arrived    = 0
+	_penguins_arrived = 0
+	_frozen_arrived = 0
 
 	get_platform_positions.emit(qtt_penguins)
 
 	for penguin in called_penguins:
 		penguin.move_to()
+
 
 ## Called by each penguin when it arrives at the platform
 func notify_penguin_arrived(was_frozen: bool) -> void:
@@ -100,6 +102,13 @@ func notify_penguin_arrived(was_frozen: bool) -> void:
 	if _penguins_arrived >= _penguins_en_route:
 		_calculate_combo_score()
 
+
+func trigger_loss() -> void:
+	if not level_active:
+		return
+	_lose()
+
+
 func _calculate_combo_score() -> void:
 	var n := _frozen_arrived
 	if n <= 0:
@@ -110,19 +119,12 @@ func _calculate_combo_score() -> void:
 	var total := n + (n - 1)
 	print("Frozen: %d | Combo bonus: +%d | Total score: +%d" % [n, n - 1, total])
 	_add_score(total)
-
-
-func trigger_loss() -> void:
-	if not level_active:
-		return
-	_lose()
+	print("CURRENT POINTS: ", score_points)
 
 
 func _add_score(amount: int) -> void:
-	score_points = mini(score_points + amount, max_score_points)
+	score_points += amount
 	score_changed.emit(score_points, max_score_points)
-	if score_points >= max_score_points:
-		_win()
 
 
 func _win() -> void:
