@@ -622,7 +622,7 @@ script = ExtResource("1_wmdo7")
 position = Vector2(-2, -39)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_weu30")
-animation = &"idle"
+animation = &"dead"
 
 [node name="Tecla" type="Sprite2D" parent="."]
 position = Vector2(0.625, 24)

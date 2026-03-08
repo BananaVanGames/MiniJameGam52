@@ -84,14 +84,16 @@ func player_blows_whistle() -> void:
 
 func send_penguins_to_platform() -> void:
 	var called_penguins: Array = get_tree().get_nodes_in_group("penguins")
-	var qtt_penguins: int = called_penguins.size()
+	# Filter out dying penguins
+	called_penguins = called_penguins.filter(func(p): return not p._is_dead)
 
+	var qtt_penguins: int = called_penguins.size()
 	if qtt_penguins == 0:
 		return
 
 	_penguins_en_route = qtt_penguins
-	_penguins_arrived = 0
-	_frozen_arrived = 0
+	_penguins_arrived  = 0
+	_frozen_arrived    = 0
 
 	get_platform_positions.emit(qtt_penguins)
 
