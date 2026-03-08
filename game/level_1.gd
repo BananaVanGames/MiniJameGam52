@@ -9,11 +9,13 @@ const LEVEL_INTRO_MUSIC = preload("uid://bd6nxbpyrnox4")
 const PENGUIN_MUSIC = preload("uid://cuc8bor1dge2r")
 
 var _music_position: float = 0.0
+var tutorial_finished: bool = false
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var platform: Node2D = $Platform
+@onready var tutorial: Control = $CanvasLayer/Tutorial
 
 
 func _ready() -> void:
@@ -21,19 +23,21 @@ func _ready() -> void:
 	GameHandler.penguins_delivered.connect(_on_penguins_delivered)
 	GameHandler.load_level(LevelData.LEVELS[1])
 	GameHandler.reset_level_parameters()
-
-	var intro = LEVEL_INTRO.instantiate()
-	canvas_layer.add_child(intro)
+	tutorial.tutorial_finished.connect(_on_tutorial_finished)
 	audio_stream_player.stream = LEVEL_INTRO_MUSIC
 	audio_stream_player.play()
-	intro.intro_finished.connect(on_intro_finished)
 
+func _on_tutorial_finished() -> void:
+	tutorial_finished = true
+	tutorial.queue_free()
+	var intro = LEVEL_INTRO.instantiate()
+	canvas_layer.add_child(intro)
+	intro.intro_finished.connect(on_intro_finished)
 
 func on_intro_finished() -> void:
 	start_playing.emit()
 	audio_stream_player.stream = PENGUIN_MUSIC
 	audio_stream_player.play()
-
 
 func end_level() -> void:
 	var end_screen = END_SCREEN.instantiate()
