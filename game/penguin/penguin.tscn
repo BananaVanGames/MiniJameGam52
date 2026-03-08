@@ -236,8 +236,6 @@ show_percentage = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r62jp")
 
-[node name="Area2D" type="Area2D" parent="."]
-
 [node name="DirTimer" type="Timer" parent="."]
 
 [node name="TempTimer" type="Timer" parent="."]

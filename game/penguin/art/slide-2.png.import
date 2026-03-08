@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wf0r132440iq"
-path.s3tc="res://.godot/imported/plataforma02.png-225e3a9fc37bbf9d7e6597db493d8584.s3tc.ctex"
+uid="uid://ca5qe1xse6jfb"
+path.s3tc="res://.godot/imported/slide-2.png-9602dbd81c9a8d8458ea20ba87091234.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/freezing_platform/plataforma02.png"
-dest_files=["res://.godot/imported/plataforma02.png-225e3a9fc37bbf9d7e6597db493d8584.s3tc.ctex"]
+source_file="res://game/penguin/art/slide-2.png"
+dest_files=["res://.godot/imported/slide-2.png-9602dbd81c9a8d8458ea20ba87091234.s3tc.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7oew5x4hq6kt"]
+[gd_scene load_steps=8 format=3 uid="uid://7oew5x4hq6kt"]
 
 [ext_resource type="Script" uid="uid://badmcclonhj7b" path="res://game/level_1.gd" id="1_sgg2w"]
 [ext_resource type="PackedScene" uid="uid://y27ks8awrntc" path="res://game/background/background.tscn" id="2_e3oi6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj6dlil3lm38y" path="res://game/whistle/whistle.tscn" id="3_sgg2w"]
 [ext_resource type="AudioStream" uid="uid://cuc8bor1dge2r" path="res://sound/music/penguin music.ogg" id="4_qo14e"]
 [ext_resource type="PackedScene" uid="uid://dx44rq4bqg8oj" path="res://ui/pause_menu/pause_menu.tscn" id="6_44xb3"]
+[ext_resource type="PackedScene" uid="uid://bsxnvp3ye6gur" path="res://game/freezing_platform/platform.tscn" id="7_6fphe"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_sgg2w")
@@ -34,3 +35,9 @@ position = Vector2(1030, 562)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_44xb3")]
 visible = false
+
+[node name="Platform" parent="CanvasLayer" instance=ExtResource("7_6fphe")]
+position = Vector2(233, 339)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(327, 298)

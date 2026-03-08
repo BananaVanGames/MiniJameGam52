@@ -3,26 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br0q3wgrfj5hy"
-path="res://.godot/imported/plataforma01.png-c56261239f943e341dfb7d15637806fd.ctex"
+path.s3tc="res://.godot/imported/plataforma01.png-c56261239f943e341dfb7d15637806fd.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/freezing_platform/plataforma01.png"
-dest_files=["res://.godot/imported/plataforma01.png-c56261239f943e341dfb7d15637806fd.ctex"]
+dest_files=["res://.godot/imported/plataforma01.png-c56261239f943e341dfb7d15637806fd.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
+compress/normal_map=2
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0

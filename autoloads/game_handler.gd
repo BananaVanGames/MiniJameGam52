@@ -4,24 +4,31 @@ signal score_changed(new_score: int, max_score: int)
 signal whistle_blown()
 signal level_won()
 signal level_lost()
+signal get_platform_positions(qtt_positions: int)
 
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
 var max_screen_penguins: int = 8 ## max penguins alive at once
 var max_level_penguins: int = 20 ## max penguins per level
 var max_temperature: int = 10 ## temperature at which a penguin dies
-var min_whistle_temp: int = 2 ## acceptable temp range low  (inclusive)
-var max_whistle_temp: int = 5 ## acceptable temp range high (inclusive)
+var freezing_temp: int = 2 ## acceptable temp range low  (inclusive)
 var auto_whistle_interval: float = 15.0 ## seconds between automatic whistles
 var lost_penguins: int = 0 ## Number of penguins that were lost per level
 
 var score_points: int = 0
 var level_active: bool = false
 
+var random_platform_positions: Array = []
+
 
 func _process(_delta: float) -> void:
 	if not level_active:
 		return
+
+
+func set_random_platform_positions(values: Array) -> void:
+	random_platform_positions = values
+	print("PLATFORM VALUES: ", random_platform_positions)
 
 
 func add_lost_penguin() -> void:
@@ -51,8 +58,7 @@ func load_level(config: Dictionary) -> void:
 	max_screen_penguins = config.get("max_screen_penguins", 8)
 	max_level_penguins = config.get("max_level_penguins", 20)
 	max_temperature = config.get("max_temperature", 100)
-	min_whistle_temp = config.get("min_whistle_temp", 2)
-	max_whistle_temp = config.get("max_whistle_temp", 5)
+	freezing_temp = config.get("freezing_temp", 2)
 	auto_whistle_interval = config.get("auto_whistle_interval", 15.0)
 
 
@@ -62,15 +68,19 @@ func player_blows_whistle() -> void:
 	if not level_active:
 		return
 
-	freeze_penguins()
+	send_penguins_to_platform()
 
 
-func freeze_penguins() -> void:
+func send_penguins_to_platform() -> void:
 	var scored := 0
-	for penguin in get_tree().get_nodes_in_group("penguins"):
+	var called_penguins: Array = get_tree().get_nodes_in_group("penguins")
+	var qtt_penguins: int = called_penguins.size()
+	get_platform_positions.emit(qtt_penguins)
+
+	for penguin in called_penguins:
 		var temp: int = penguin.temperature
-		if temp >= min_whistle_temp and temp <= max_whistle_temp:
-			#penguin.send_to_safe_zone()   # defined in Penguin.gd
+		if temp >= freezing_temp:
+			penguin.move_to()
 			scored += 1
 
 	if scored > 0:

@@ -4,7 +4,7 @@ const COLOR_DANGER = Color("ff0000")
 const COLOR_COLD = Color("00aeff")
 const COLOR_MEDIUM = Color("ffd264")
 
-@export var min_temp: int = -5
+@export var min_temp: int = -3
 @export var max_temp: int = 10
 @export var move_speed: float = 60.0
 @export var dir_change_time: float = 2.0
@@ -180,12 +180,12 @@ func _set_cold_state(fill: StyleBoxFlat) -> void:
 func _refresh_bar() -> void:
 	temp_bar.value = temperature
 
-	var danger_threshold := GameHandler.max_temperature - 3
+	var danger_threshold: int = int(GameHandler.max_temperature * 0.7)
 	var fill := temp_bar.get_theme_stylebox("fill").duplicate() as StyleBoxFlat
 
 	if temperature >= danger_threshold:
 		_set_danger_state(fill)
-	elif temperature <= GameHandler.min_whistle_temp:
+	elif temperature <= GameHandler.freezing_temp:
 		_set_cold_state(fill)
 	else:
 		_set_medium_state(fill)

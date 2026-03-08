@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wf0r132440iq"
-path.s3tc="res://.godot/imported/plataforma02.png-225e3a9fc37bbf9d7e6597db493d8584.s3tc.ctex"
+uid="uid://clil0whwx8lhm"
+path.s3tc="res://.godot/imported/fuck-ice01.png-3faa075e91e57a1e9634a0f440e9859a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://game/freezing_platform/plataforma02.png"
-dest_files=["res://.godot/imported/plataforma02.png-225e3a9fc37bbf9d7e6597db493d8584.s3tc.ctex"]
+source_file="res://game/penguin/art/fuck-ice01.png"
+dest_files=["res://.godot/imported/fuck-ice01.png-3faa075e91e57a1e9634a0f440e9859a.s3tc.ctex"]
 
 [params]
 

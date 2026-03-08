@@ -7,8 +7,7 @@ const LEVELS: Dictionary = {
 		"max_screen_penguins": 6,
 		"max_level_penguins": 20,
 		"max_temperature": 10,
-		"min_whistle_temp": 2,
-		"max_whistle_temp": 6,
+		"freezing_temp": 2,
 		"auto_whistle_interval": 15.0,
 	} ,
 	2: {
@@ -17,8 +16,7 @@ const LEVELS: Dictionary = {
 		"max_screen_penguins": 8,
 		"max_level_penguins": 25,
 		"max_temperature": 10,
-		"min_whistle_temp": 2,
-		"max_whistle_temp": 5,
+		"freezing_temp": 2,
 		"auto_whistle_interval": 12.0,
 	} ,
 	3: {
@@ -27,8 +25,7 @@ const LEVELS: Dictionary = {
 		"max_screen_penguins": 10,
 		"max_level_penguins": 30,
 		"max_temperature": 10,
-		"min_whistle_temp": 3,
-		"max_whistle_temp": 5,
+		"freezing_temp": 3,
 		"auto_whistle_interval": 10.0,
 	} ,
 }

@@ -9,12 +9,12 @@ const WHISTLE_SOUNDS = [WHISTLE_1, WHISTLE_2, WHISTLE_3]
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var timer: Timer = $Timer
+@onready var global_timer: Timer = $GlobalTimer
 
 
 func _ready() -> void:
-	timer.wait_time = global_time
-	GameHandler.whistle_blown.connect(on_player_activate_whistle)
+	global_timer.wait_time = global_time
+	GameHandler.whistle_blown.connect(_on_global_timer_timeout)
 
 
 func blow_whistle() -> void:
@@ -25,12 +25,14 @@ func blow_whistle() -> void:
 	animation_player.play("blow")
 
 
-func on_player_activate_whistle() -> void:
+func _on_global_timer_timeout() -> void:
 	blow_whistle()
-	timer.stop()
-	timer.start(global_time)
+	
+	if GameHandler.level_active:
+		global_timer.stop()
+		global_timer.start(global_time)
+		GameHandler.send_penguins_to_platform()
 
 
-func _on_timer_timeout() -> void:
-	blow_whistle()
-	GameHandler.freeze_penguins()
+func _on_texture_button_pressed() -> void:
+	_on_global_timer_timeout()
