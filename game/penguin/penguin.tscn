@@ -1,41 +1,268 @@
-[gd_scene load_steps=41 format=3 uid="uid://d0qmhsecy1gnq"]
+[gd_scene load_steps=68 format=3 uid="uid://d0qmhsecy1gnq"]
 
 [ext_resource type="Script" uid="uid://dw1ri84bv1px" path="res://game/penguin/penguin.gd" id="1_wmdo7"]
 [ext_resource type="Texture2D" uid="uid://0h31e2t0qlh" path="res://game/penguin/art/pinwino01.png" id="2_0cu47"]
 [ext_resource type="Texture2D" uid="uid://b1j38dkci56ui" path="res://game/penguin/art/idle101.png" id="2_8e8yi"]
+[ext_resource type="Texture2D" uid="uid://bt31b4tid46b7" path="res://game/penguin/art/ded01.png" id="2_er5ga"]
 [ext_resource type="Texture2D" uid="uid://cod61tgvmu3n" path="res://game/penguin/art/pinwino02.png" id="3_a5ru4"]
 [ext_resource type="Texture2D" uid="uid://bnu7kctftv22f" path="res://game/penguin/art/idle102.png" id="3_h0sof"]
+[ext_resource type="Texture2D" uid="uid://rn5bfknrlfmv" path="res://game/penguin/art/ded02.png" id="3_xj2nf"]
+[ext_resource type="Texture2D" uid="uid://byucpgxtho7x4" path="res://game/penguin/art/ded03.png" id="4_sr82v"]
 [ext_resource type="Texture2D" uid="uid://c2jkke6mpoup2" path="res://game/penguin/art/pinwino03.png" id="4_vu7vq"]
 [ext_resource type="Texture2D" uid="uid://cl6d7w0ghhhqx" path="res://game/penguin/art/idle103.png" id="4_wasr5"]
 [ext_resource type="Texture2D" uid="uid://xguwjawa1es" path="res://game/penguin/art/pinwino04.png" id="5_13136"]
 [ext_resource type="Texture2D" uid="uid://c145ko4fdk4pa" path="res://game/penguin/art/idle104.png" id="5_hpmu0"]
+[ext_resource type="Texture2D" uid="uid://dpwnnkl8rvsxa" path="res://game/penguin/art/ded04.png" id="5_i7vd2"]
 [ext_resource type="Texture2D" uid="uid://dah1m6bvkqsw3" path="res://game/penguin/art/pinwino05.png" id="6_iodxu"]
+[ext_resource type="Texture2D" uid="uid://c6y7i5w1ejf7r" path="res://game/penguin/art/ded05.png" id="6_pakot"]
 [ext_resource type="Texture2D" uid="uid://ujaqil5mpp7w" path="res://game/penguin/art/idle105.png" id="6_x0mn0"]
 [ext_resource type="Texture2D" uid="uid://ccci2hk4k2hgq" path="res://game/penguin/art/pinwino06.png" id="7_dubca"]
+[ext_resource type="Texture2D" uid="uid://dx75vfjdnyi0k" path="res://game/penguin/art/ded06.png" id="7_haqyf"]
 [ext_resource type="Texture2D" uid="uid://cmklxk6nxntn5" path="res://game/penguin/art/idle106.png" id="7_sd4ww"]
+[ext_resource type="Texture2D" uid="uid://bwgsvvmj131eo" path="res://game/penguin/art/ded07.png" id="8_1dje1"]
 [ext_resource type="Texture2D" uid="uid://b8rblaufcug0x" path="res://game/penguin/art/pinwino07.png" id="8_4ewhg"]
 [ext_resource type="Texture2D" uid="uid://d06f62nxiyvx" path="res://game/penguin/art/idle107.png" id="8_8kc0d"]
 [ext_resource type="Texture2D" uid="uid://dh5gi5840u8wk" path="res://game/penguin/art/idle108.png" id="9_83yqy"]
+[ext_resource type="Texture2D" uid="uid://dfg2qm07icsqn" path="res://game/penguin/art/ded08.png" id="9_m33lt"]
 [ext_resource type="Texture2D" uid="uid://ddisqb60btiix" path="res://game/penguin/art/tecla.png" id="9_vu7vq"]
 [ext_resource type="Texture2D" uid="uid://din1x8ekbx6mn" path="res://game/penguin/art/idle109.png" id="10_51qgs"]
+[ext_resource type="Texture2D" uid="uid://irbeqrdps4we" path="res://game/penguin/art/ded09.png" id="10_j1wgx"]
 [ext_resource type="AudioStream" uid="uid://byniqk31t0pn6" path="res://game/penguin/sounds/tecla.mp3" id="11_13136"]
 [ext_resource type="Texture2D" uid="uid://codk6g7w7m4is" path="res://game/penguin/art/termometer_cold.png" id="11_iodxu"]
+[ext_resource type="Texture2D" uid="uid://yogroq37mh5" path="res://game/penguin/art/ded10.png" id="11_w44kc"]
 [ext_resource type="Texture2D" uid="uid://bdr3wuyy7tb55" path="res://game/penguin/art/idle110.png" id="11_wsbnt"]
+[ext_resource type="Texture2D" uid="uid://b8mu0304xkne2" path="res://game/penguin/art/ded11.png" id="12_axtwt"]
 [ext_resource type="Texture2D" uid="uid://dxb6vux3b0e2f" path="res://game/penguin/art/idle111.png" id="12_jooyy"]
 [ext_resource type="Texture2D" uid="uid://c8gnquc4lylk1" path="res://game/penguin/art/termometer_hot_1 (1).png" id="12_r62jp"]
 [ext_resource type="Texture2D" uid="uid://btxu6dqtaqxqb" path="res://game/penguin/art/termometer_hot_1 (2).png" id="13_2ra44"]
 [ext_resource type="Texture2D" uid="uid://b6dlk1c3sa0p6" path="res://game/penguin/art/run01.png" id="13_83yqy"]
+[ext_resource type="Texture2D" uid="uid://dcct35xekdrme" path="res://game/penguin/art/ded12.png" id="13_e64h7"]
 [ext_resource type="Texture2D" uid="uid://cgqi3eck8wnj0" path="res://game/penguin/art/run02.png" id="14_51qgs"]
 [ext_resource type="Texture2D" uid="uid://dlp04i7kra830" path="res://game/penguin/art/termometer_hot_1 (3).png" id="14_t2gtx"]
+[ext_resource type="Texture2D" uid="uid://cwd4tm8vx1uic" path="res://game/penguin/art/ded13.png" id="14_tkqx3"]
 [ext_resource type="Texture2D" uid="uid://bftma3h05xnqs" path="res://game/penguin/art/termometer_hot_1 (4).png" id="15_c0ad2"]
 [ext_resource type="Texture2D" uid="uid://dorooie78alky" path="res://game/penguin/art/run03.png" id="15_wsbnt"]
+[ext_resource type="Texture2D" uid="uid://bhq4tr0j0csl5" path="res://game/penguin/art/ded14.png" id="15_ycjyq"]
+[ext_resource type="Texture2D" uid="uid://c0p3deyw0d3pe" path="res://game/penguin/art/ded15.png" id="16_ajy0f"]
 [ext_resource type="Texture2D" uid="uid://c545uoorg0v0g" path="res://game/penguin/art/run04.png" id="16_jooyy"]
+[ext_resource type="Texture2D" uid="uid://qsb58407ebo2" path="res://game/penguin/art/ded16.png" id="17_uu52v"]
 [ext_resource type="Texture2D" uid="uid://bkt8exocec14c" path="res://game/penguin/art/run05.png" id="17_weu30"]
 [ext_resource type="Texture2D" uid="uid://dwrk355yyjrk7" path="res://game/penguin/art/run06.png" id="18_e4ip4"]
+[ext_resource type="Texture2D" uid="uid://ck3f6bpnep1l6" path="res://game/penguin/art/ded17.png" id="18_fhxcq"]
+[ext_resource type="Texture2D" uid="uid://0locnfgygvrw" path="res://game/penguin/art/ded18.png" id="19_5jkex"]
+[ext_resource type="Texture2D" uid="uid://d0y4sxpgwqu1g" path="res://game/penguin/art/ded19.png" id="20_183vk"]
+[ext_resource type="Texture2D" uid="uid://bwvjikg30ab03" path="res://game/penguin/art/ded20.png" id="21_jxha3"]
+[ext_resource type="Texture2D" uid="uid://xacfscr32t5m" path="res://game/penguin/art/ded21.png" id="22_1qpc4"]
+[ext_resource type="Texture2D" uid="uid://oav26dxijtll" path="res://game/penguin/art/ded22.png" id="23_qrrtg"]
+[ext_resource type="Texture2D" uid="uid://c1koxybsjy0a1" path="res://game/penguin/art/ded23.png" id="24_6i6kb"]
+[ext_resource type="Texture2D" uid="uid://b2djwwib68svq" path="res://game/penguin/art/ded24.png" id="25_g40ph"]
+[ext_resource type="Texture2D" uid="uid://bg7fpa2sjhfj5" path="res://game/penguin/art/ded25.png" id="26_odqdb"]
+[ext_resource type="Texture2D" uid="uid://c6kddrqibl04t" path="res://game/penguin/art/ded26.png" id="27_efexu"]
 [ext_resource type="Texture2D" uid="uid://clil0whwx8lhm" path="res://game/penguin/art/fuck-ice01.png" id="27_h0sof"]
+[ext_resource type="Texture2D" uid="uid://d1fhaahglaw1y" path="res://game/penguin/art/ded27.png" id="28_2w1m8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_weu30"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_er5ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_er5ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_er5ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_er5ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xj2nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xj2nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xj2nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xj2nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sr82v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sr82v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sr82v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i7vd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i7vd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i7vd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pakot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pakot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pakot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haqyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haqyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haqyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haqyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1dje1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1dje1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1dje1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1dje1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m33lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m33lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j1wgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j1wgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w44kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w44kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_axtwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_axtwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e64h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e64h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tkqx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tkqx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ycjyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ycjyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ajy0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ajy0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uu52v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uu52v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fhxcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fhxcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5jkex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5jkex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_183vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_183vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jxha3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jxha3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1qpc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1qpc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qrrtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qrrtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6i6kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6i6kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_g40ph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_g40ph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_odqdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_odqdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_efexu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_efexu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2w1m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2w1m8")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 24.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_8e8yi")
@@ -394,7 +621,7 @@ script = ExtResource("1_wmdo7")
 position = Vector2(-2, -39)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_weu30")
-animation = &"walking"
+animation = &"idle"
 
 [node name="Tecla" type="Sprite2D" parent="."]
 position = Vector2(0.625, 24)
@@ -448,6 +675,7 @@ libraries = {
 }
 
 [node name="Icecube" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -36)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_h0sof")

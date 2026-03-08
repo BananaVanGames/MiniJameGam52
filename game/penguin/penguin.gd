@@ -21,6 +21,7 @@ var tex_tecla_press = load("res://game/penguin/art/tecla-presionada.png")
 var termometro_medium = load("res://game/penguin/art/termometer_medium.png")
 var termometro_cold = load("res://game/penguin/art/termometer_cold.png")
 
+var _penguin_dying: bool = false
 var _move_dir: Vector2 = Vector2.ZERO
 var _screen_rect: Rect2
 var _entered_screen: bool = false # true once penguin is inside viewport
@@ -68,6 +69,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if _penguin_dying:
+		return
+
 	if _is_on_platform:
 		velocity = Vector2.ZERO
 		return
@@ -211,15 +215,21 @@ func _on_arrived_at_platform() -> void:
 	_is_on_platform = true # ← locks physics permanently
 	velocity = Vector2.ZERO
 	move_and_slide() # one last slide to flush velocity
-	animated_sprite_2d.animation = "idle"
-	var num_frames = animated_sprite_2d.sprite_frames.get_frame_count("idle")
-	animated_sprite_2d.frame = randi_range(0, num_frames)
-	animated_sprite_2d.pause()
+
 	if _was_frozen:
 		icecube.visible = true
+		animated_sprite_2d.animation = "idle"
+		var num_frames = animated_sprite_2d.sprite_frames.get_frame_count("idle")
+		animated_sprite_2d.frame = randi_range(0, num_frames)
+		animated_sprite_2d.pause()
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
+	else:
+		animated_sprite_2d.play("dead")
+		await animated_sprite_2d.animation_finished
+		queue_free()
+
 	GameHandler.notify_penguin_arrived(_was_frozen)
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
 
 
 func _set_danger_state(fill: StyleBoxFlat) -> void:
@@ -266,6 +276,13 @@ func _refresh_bar() -> void:
 
 func _check_death() -> void:
 	if temperature >= max_temp:
-		print("Penguin '%s' overheated!" % letter)
+		_penguin_dying = true
+		animated_sprite_2d.stop()
+		dir_timer.stop()
+		temp_timer.stop()
+
 		GameHandler.add_lost_penguin()
+		animated_sprite_2d.play("dead")
+
+		await animated_sprite_2d.animation_finished
 		queue_free()
