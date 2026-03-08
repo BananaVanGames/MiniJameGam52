@@ -5,7 +5,7 @@ const LEVELS: Dictionary = {
 		"level_number": 1,
 		"max_score_points": 10,
 		"max_screen_penguins": 6,
-		"max_level_penguins": 20,
+		"max_level_penguins": 5,
 		"max_temperature": 10,
 		"freezing_temp": 2,
 		"auto_whistle_interval": 15.0,

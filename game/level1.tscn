@@ -33,11 +33,11 @@ autoplay = true
 [node name="Whistle" parent="CanvasLayer" instance=ExtResource("3_sgg2w")]
 position = Vector2(1030, 562)
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_44xb3")]
-visible = false
-
 [node name="Platform" parent="CanvasLayer" instance=ExtResource("7_6fphe")]
 position = Vector2(233, 339)
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_44xb3")]
+visible = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(327, 298)

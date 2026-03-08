@@ -14,6 +14,9 @@ var max_temperature: int = 10 ## temperature at which a penguin dies
 var freezing_temp: int = 2 ## acceptable temp range low  (inclusive)
 var auto_whistle_interval: float = 15.0 ## seconds between automatic whistles
 var lost_penguins: int = 0 ## Number of penguins that were lost per level
+var _penguins_en_route: int = 0
+var _penguins_arrived: int = 0
+var _frozen_arrived: int = 0
 
 var score_points: int = 0
 var level_active: bool = false
@@ -72,19 +75,41 @@ func player_blows_whistle() -> void:
 
 
 func send_penguins_to_platform() -> void:
-	var scored := 0
 	var called_penguins: Array = get_tree().get_nodes_in_group("penguins")
 	var qtt_penguins: int = called_penguins.size()
+
+	if qtt_penguins == 0:
+		return
+
+	_penguins_en_route = qtt_penguins
+	_penguins_arrived  = 0
+	_frozen_arrived    = 0
+
 	get_platform_positions.emit(qtt_penguins)
 
 	for penguin in called_penguins:
-		var temp: int = penguin.temperature
-		if temp >= freezing_temp:
-			penguin.move_to()
-			scored += 1
+		penguin.move_to()
 
-	if scored > 0:
-		_add_score(scored)
+## Called by each penguin when it arrives at the platform
+func notify_penguin_arrived(was_frozen: bool) -> void:
+	_penguins_arrived += 1
+	if was_frozen:
+		_frozen_arrived += 1
+
+	# Wait until ALL penguins have arrived before scoring
+	if _penguins_arrived >= _penguins_en_route:
+		_calculate_combo_score()
+
+func _calculate_combo_score() -> void:
+	var n := _frozen_arrived
+	if n <= 0:
+		print("No frozen penguins — no score")
+		return
+
+	# Formula: 1pt each + (n-1) combo bonus once
+	var total := n + (n - 1)
+	print("Frozen: %d | Combo bonus: +%d | Total score: +%d" % [n, n - 1, total])
+	_add_score(total)
 
 
 func trigger_loss() -> void:

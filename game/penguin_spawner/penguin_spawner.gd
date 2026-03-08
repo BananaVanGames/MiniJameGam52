@@ -12,7 +12,7 @@ const LETTER_POOL: Array[String] = [
 @export_group("Spawning")
 @export var spawn_interval: float = 3.0
 @export var max_simultaneous_spawns: int = 2 ## how many can spawn in the same wave
-@export var spawn_distance: float = 60.0
+@export var spawn_distance: float = 10.0
 
 var remaining_penguins: int = -1
 var level_clear: bool = false
@@ -30,7 +30,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if remaining_penguins == 0:
-		if get_tree().get_nodes_in_group("penguins").is_empty():
+		if get_tree().get_nodes_in_group("penguins").is_empty() :
 			main_level.end_level()
 			remaining_penguins = -1
 

@@ -8,6 +8,8 @@ const COLOR_MEDIUM = Color("ffd264")
 @export var max_temp: int = 10
 @export var move_speed: float = 60.0
 @export var dir_change_time: float = 2.0
+@export var idle_chance: float = 0.25        ## 0.0–1.0 probability of stopping on dir change
+@export var idle_duration: float = 1.5       ## seconds to stay idle before 
 
 var temperature: int = 0
 var letter: String = ""
@@ -20,8 +22,13 @@ var termometro_cold = load("res://game/penguin/art/termometer_cold.png")
 var _move_dir: Vector2 = Vector2.ZERO
 var _screen_rect: Rect2
 var _entered_screen: bool = false # true once penguin is inside viewport
+var _is_going_to_platform: bool = false
+var _platform_target: Vector2 = Vector2.ZERO
+var _arrival_threshold: float = 8.0  # distance in px to consider "arrived"
+var _was_frozen: bool           = false
+var _is_on_platform: bool = false
+var _is_idle: bool = false   ## true while doing a random idle pause
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var dir_timer: Timer = $DirTimer
 @onready var temp_timer: Timer = $TempTimer
 @onready var letter_label: Label = $LetterLabel
@@ -31,6 +38,7 @@ var _entered_screen: bool = false # true once penguin is inside viewport
 @onready var tecla_sonido: AudioStreamPlayer = $"Tecla-sonido"
 @onready var termometer: Sprite2D = $Termometer
 @onready var termometer_red: AnimatedSprite2D = $TermometerRed
+@onready var icecube: Sprite2D = $Icecube
 
 
 func _ready() -> void:
@@ -40,8 +48,9 @@ func _ready() -> void:
 	temp_bar.max_value = GameHandler.max_temperature
 	temp_bar.value = temperature
 	_refresh_bar()
-	animation_player.play("walking")
+	animated_sprite_2d.play("walking")
 	letter_label.text = letter
+	icecube.visible = false
 
 	temp_timer.wait_time = 1.0
 	temp_timer.autostart = true
@@ -57,6 +66,25 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if _is_on_platform:
+		velocity = Vector2.ZERO
+		return
+
+	if _is_going_to_platform:
+		animated_sprite_2d.play("slide")
+		_move_dir = (_platform_target - global_position).normalized()
+		velocity  = _move_dir * move_speed * 1.5
+		move_and_slide()
+		if animated_sprite_2d and _move_dir.x != 0:
+			animated_sprite_2d.flip_h = _move_dir.x > 0
+		if global_position.distance_to(_platform_target) <= _arrival_threshold:
+			_on_arrived_at_platform()
+		return
+
+	if _is_idle:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	velocity = _move_dir * move_speed
 	move_and_slide()
 
@@ -129,9 +157,13 @@ func _walk_toward_screen() -> void:
 		randf_range(_screen_rect.size.y * 0.2, _screen_rect.size.y * 0.8)
 	)
 	_move_dir = (target - global_position).normalized()
+	_play_walk()
 
 
 func _pick_random_direction() -> void:
+	if randf() < idle_chance:
+		_start_idle()
+		return
 	# Random angle, but bias away from edges if close to border
 	var margin := 60.0
 	var pos := global_position
@@ -149,6 +181,47 @@ func _pick_random_direction() -> void:
 		_move_dir = (random_dir + to_center * 1.5).normalized()
 	else:
 		_move_dir = Vector2(cos(angle), sin(angle))
+	_play_walk()
+	
+func _start_idle() -> void:
+	_is_idle = true
+	_move_dir = Vector2.ZERO
+	animated_sprite_2d.play("idle")
+	# Resume walking after idle_duration seconds
+	await get_tree().create_timer(idle_duration).timeout
+	if not _is_on_platform and not _is_going_to_platform:
+		_is_idle = false
+		_pick_random_direction()
+
+
+func _play_walk() -> void:
+	if not _is_on_platform:
+		animated_sprite_2d.play("walking")
+
+func move_to() -> void:
+	if GameHandler.random_platform_positions.is_empty():
+		return
+
+	_platform_target       = GameHandler.random_platform_positions.pop_front()
+	_is_going_to_platform  = true
+	_was_frozen            = temperature <= GameHandler.freezing_temp
+
+	temp_timer.stop()
+	dir_timer.stop()
+	_move_dir = (_platform_target - global_position).normalized()
+	_play_walk()
+
+func _on_arrived_at_platform() -> void:
+	_is_going_to_platform = false
+	_is_on_platform       = true   # ← locks physics permanently
+	velocity              = Vector2.ZERO
+	move_and_slide()               # one last slide to flush velocity
+	animated_sprite_2d.play("idle")
+	if _was_frozen:
+		icecube.visible = true
+	GameHandler.notify_penguin_arrived(_was_frozen)
+	await get_tree().create_timer(1.0).timeout
+	queue_free()
 
 
 func _set_danger_state(fill: StyleBoxFlat) -> void:
