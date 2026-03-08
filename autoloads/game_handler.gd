@@ -5,6 +5,8 @@ signal whistle_blown()
 signal level_won
 signal level_lost
 signal get_platform_positions(qtt_positions: int)
+signal penguins_delivered()
+
 
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
@@ -57,21 +59,21 @@ func stop_level() -> void:
 ## Load a level config dict — call before start_level()
 ## e.g. GameHandler.load_level(LevelData.LEVELS[1])
 func load_level(config: Dictionary) -> void:
-	level_number = config.get("level_number", 1)
-	max_score_points = config.get("max_score_points", 10)
-	max_screen_penguins = config.get("max_screen_penguins", 8)
-	max_level_penguins = config.get("max_level_penguins", 20)
-	max_temperature = config.get("max_temperature", 100)
-	freezing_temp = config.get("freezing_temp", 2)
-	auto_whistle_interval = config.get("auto_whistle_interval", 15.0)
+	level_number = config.get("level_number")
+	max_score_points = config.get("max_score_points")
+	max_screen_penguins = config.get("max_screen_penguins")
+	max_level_penguins = config.get("max_level_penguins")
+	max_temperature = config.get("max_temperature")
+	freezing_temp = config.get("freezing_temp")
+	auto_whistle_interval = config.get("auto_whistle_interval")
 
 
 func player_blows_whistle() -> void:
 	whistle_blown.emit()
+	print("emit")
 
 	if not level_active:
 		return
-
 	send_penguins_to_platform()
 
 
@@ -101,6 +103,7 @@ func notify_penguin_arrived(was_frozen: bool) -> void:
 	# Wait until ALL penguins have arrived before scoring
 	if _penguins_arrived >= _penguins_en_route:
 		_calculate_combo_score()
+		penguins_delivered.emit()
 
 
 func trigger_loss() -> void:

@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var platform: AnimatedSprite2D = $Platform
+@onready var plataforma_off: Sprite2D = $PlataformaOff
 
 
 func _ready() -> void:
@@ -22,3 +24,12 @@ func get_random_platform_position() -> Vector2:
 	var y = randi_range(int(rect.position.y), int(rect.position.y + rect.size.y))
 	var rand_point = global_position + Vector2(x, y)
 	return rand_point
+
+func platform_on_whistle_blown() -> void:
+	plataforma_off.visible = false
+	platform.visible = true
+	platform.play("dance")
+	
+func platform_on_delivered() -> void:
+	plataforma_off.visible = true
+	platform.visible = false

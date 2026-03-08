@@ -39,7 +39,7 @@ animations = [{
 "texture": ExtResource("2_lt2nv")
 }],
 "loop": true,
-"name": &"default",
+"name": &"dance",
 "speed": 24.0
 }]
 
@@ -52,7 +52,7 @@ script = ExtResource("1_lt2nv")
 [node name="Platform" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v0ws7")
-frame_progress = 0.60241514
+animation = &"dance"
 
 [node name="PlataformaOff" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

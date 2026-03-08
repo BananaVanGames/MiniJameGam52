@@ -35,4 +35,4 @@ func _on_global_timer_timeout() -> void:
 
 
 func _on_texture_button_pressed() -> void:
-	_on_global_timer_timeout()
+	GameHandler.whistle_blown.emit()
