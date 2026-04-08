@@ -21,7 +21,7 @@ const LEVELS: Dictionary = {
 	} ,
 	3: {
 		"level_number": 3,
-		"max_score_points": 20,
+		"max_score_points": 30,
 		"max_screen_penguins": 10,
 		"max_level_penguins": 30,
 		"max_temperature": 10,

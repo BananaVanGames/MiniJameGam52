@@ -1,12 +1,12 @@
 extends Node
 
 signal score_changed(new_score: int, max_score: int)
-signal whistle_blown()
+signal whistle_blown
 signal level_won
 signal level_lost
 signal start_level
 signal get_platform_positions(qtt_positions: int)
-signal penguins_delivered()
+signal penguins_delivered
 
 var level_number: int = 1
 var max_score_points: int = 10 ## points needed to beat the level
@@ -24,6 +24,7 @@ var level_active: bool = false
 
 var random_platform_positions: Array = []
 
+var _first_penguin: bool = false
 var _penguins_en_route: int = 0
 var _penguins_arrived: int = 0
 var _frozen_arrived: int = 0
@@ -70,12 +71,13 @@ func load_level(config: Dictionary) -> void:
 	max_temperature = config.get("max_temperature")
 	freezing_temp = config.get("freezing_temp")
 	auto_whistle_interval = config.get("auto_whistle_interval")
-	
+
 	print("CURRENT LEVEL: ", config)
 
 
 func player_blows_whistle() -> void:
 	whistle_blown.emit()
+	_first_penguin = false
 	print("emit")
 
 	if not level_active:
@@ -86,15 +88,15 @@ func player_blows_whistle() -> void:
 func send_penguins_to_platform() -> void:
 	var called_penguins: Array = get_tree().get_nodes_in_group("penguins")
 	# Filter out dying penguins
-	called_penguins = called_penguins.filter(func(p): return not p._is_dead)
+	called_penguins = called_penguins.filter(func(p): return p.called_to_platform())
 
 	var qtt_penguins: int = called_penguins.size()
 	if qtt_penguins == 0:
 		return
 
 	_penguins_en_route = qtt_penguins
-	_penguins_arrived  = 0
-	_frozen_arrived    = 0
+	_penguins_arrived = 0
+	_frozen_arrived = 0
 
 	get_platform_positions.emit(qtt_penguins)
 
@@ -108,9 +110,11 @@ func notify_penguin_arrived(was_frozen: bool) -> void:
 	if was_frozen:
 		_frozen_arrived += 1
 
+	print("PENGUINS ARRIVED: ", _penguins_arrived)
+	print("PENGUINS EN ROUTE: ", _penguins_en_route)
 	# Wait until ALL penguins have arrived before scoring
 	if _penguins_arrived >= _penguins_en_route:
-		_calculate_combo_score()
+		#_calculate_combo_score()
 		penguins_delivered.emit()
 
 
@@ -118,19 +122,6 @@ func trigger_loss() -> void:
 	if not level_active:
 		return
 	_lose()
-
-
-func _calculate_combo_score() -> void:
-	var n := _frozen_arrived
-	if n <= 0:
-		#print("No frozen penguins — no score")
-		return
-
-	# Formula: 1pt each + (n-1) combo bonus once
-	var total := n + (n - 1)
-	#print("Frozen: %d | Combo bonus: +%d | Total score: +%d" % [n, n - 1, total])
-	_add_score(total)
-	print("CURRENT POINTS: ", score_points)
 
 
 func _add_score(amount: int) -> void:

@@ -28,27 +28,29 @@ var _music_position: float = 0.0
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var platform: Node2D = $Platform
 @onready var tutorial: Control = $CanvasLayer/Tutorial
+@onready var whistle: Whistle = $CanvasLayer/Whistle
 
 
 func _ready() -> void:
 	tutorial.tutorial_finished.connect(_on_tutorial_finished)
 
+	GameHandler.start_level.connect(_on_starting_level)
 	GameHandler.whistle_blown.connect(_on_whistle_blown)
 	GameHandler.penguins_delivered.connect(_on_penguins_delivered)
 	GameHandler.load_level(LevelData.LEVELS[1])
 	GameHandler.reset_level_parameters()
-
-	audio_stream_player.stream = LEVEL_INTRO_MUSIC
-	audio_stream_player.play()
 
 
 func on_intro_finished() -> void:
 	start_playing.emit()
 	audio_stream_player.stream = PENGUIN_MUSIC
 	audio_stream_player.play()
+	whistle.start_global_timer()
 
 
 func end_level() -> void:
+	whistle.stop_global_timer()
+
 	var end_screen = END_SCREEN.instantiate()
 	canvas_layer.add_child(end_screen)
 
@@ -63,13 +65,21 @@ func end_level() -> void:
 		background.add_child(new_bg)
 
 
+func _on_starting_level() -> void:
+	whistle.start_global_timer()
+
+
 func _on_tutorial_finished() -> void:
 	tutorial_finished = true
-
 	tutorial.queue_free()
+
 	var intro = LEVEL_INTRO.instantiate()
 	canvas_layer.add_child(intro)
+
 	intro.intro_finished.connect(on_intro_finished)
+	audio_stream_player.stream = LEVEL_INTRO_MUSIC
+	audio_stream_player.play()
+	
 
 
 func _on_whistle_blown() -> void:

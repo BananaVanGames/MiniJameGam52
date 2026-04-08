@@ -36,25 +36,25 @@ texture = ExtResource("1_h41hi")
 
 [node name="Towel" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(636, 602)
+position = Vector2(629, 574)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_8sumk")
 
 [node name="Umbrela" type="Sprite2D" parent="."]
-position = Vector2(794.00006, 593)
+position = Vector2(756.2911, 523.792)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_y3q37")
 offset = Vector2(20.515, -164.82)
 
 [node name="Umbrela8" type="Sprite2D" parent="."]
-position = Vector2(687, 697)
+position = Vector2(649.291, 627.792)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_y3q37")
 offset = Vector2(20.515, -164.82)
 flip_h = true
 
 [node name="Umbrela9" type="Sprite2D" parent="."]
-position = Vector2(864, 682)
+position = Vector2(826.291, 612.792)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_y3q37")
 offset = Vector2(20.515, -164.82)

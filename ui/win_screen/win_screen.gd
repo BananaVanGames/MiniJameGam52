@@ -30,4 +30,4 @@ func _on_try_again_pressed() -> void:
 	audio_stream_player.stream = WHISTLE_SOUNDS.pick_random()
 	audio_stream_player.play()
 	await get_tree().create_timer(0.2).timeout
-	SceneLoader.load_scene("uid://bdbxg1pft4grf")
+	SceneLoader.load_scene("uid://7oew5x4hq6kt")

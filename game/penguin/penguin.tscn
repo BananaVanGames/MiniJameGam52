@@ -602,16 +602,63 @@ radius = 10.049875
 
 [sub_resource type="Animation" id="Animation_527ww"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, -66)]
+}
 
-[sub_resource type="Animation" id="Animation_vcecl"]
-resource_name = "walking"
-length = 0.8736
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_xj2nf"]
+resource_name = "add_score"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-24, -66), Vector2(-24, -100)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3hdq"]
 _data = {
 &"RESET": SubResource("Animation_527ww"),
-&"walking": SubResource("Animation_vcecl")
+&"add_score": SubResource("Animation_xj2nf")
 }
 
 [node name="Penguin" type="CharacterBody2D" groups=["penguins"]]
@@ -683,3 +730,15 @@ visible = false
 position = Vector2(0, -36)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("27_h0sof")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = -66.0
+offset_right = 22.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40
+text = "+1"

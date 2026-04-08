@@ -34,6 +34,7 @@ var _is_on_platform: bool = false
 var _is_idle: bool = false
 var _is_dead: bool = false
 
+@onready var label: Label = $Label
 @onready var dir_timer: Timer = $DirTimer
 @onready var temp_timer: Timer = $TempTimer
 @onready var letter_label: Label = $LetterLabel
@@ -45,11 +46,12 @@ var _is_dead: bool = false
 @onready var icecube: Sprite2D = $Icecube
 @onready var death_sound: AudioStreamPlayer = $DeathSound
 @onready var key_sound: AudioStreamPlayer = $KeySound
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
 	_screen_rect = get_viewport_rect()
-	temperature = (GameHandler.freezing_temp + GameHandler.max_temperature) / 2
+	temperature = GameHandler.max_temperature / 2
 	temp_bar.min_value = 0
 	temp_bar.max_value = GameHandler.max_temperature
 	temp_bar.value = temperature
@@ -135,14 +137,6 @@ func cool_down(amount: int = 1) -> void:
 	_refresh_bar()
 
 
-func apply_heat(amount: int) -> void:
-	if _is_dead:
-		return
-	temperature = clampi(temperature + amount, min_temp, max_temp)
-	_refresh_bar()
-	_check_death()
-
-
 func move_to() -> void:
 	if _is_dead or _is_on_platform:
 		return
@@ -150,8 +144,6 @@ func move_to() -> void:
 		return
 
 	_platform_target = GameHandler.random_platform_positions.pop_front()
-	_is_going_to_platform = true
-	_was_frozen = temperature <= GameHandler.freezing_temp
 	temp_timer.stop()
 	dir_timer.stop()
 	_move_dir = (_platform_target - global_position).normalized()
@@ -165,6 +157,15 @@ func penguin_death() -> void:
 	else:
 		death_sound.stream = DEATH_SOUND
 	death_sound.play()
+
+
+func called_to_platform() -> bool:
+	if _is_dead:
+		return false
+
+	temp_timer.stop()
+	_is_going_to_platform = true
+	return true
 
 
 func _on_temp_tick() -> void:
@@ -244,11 +245,26 @@ func _play_walk() -> void:
 func _on_arrived_at_platform() -> void:
 	_is_going_to_platform = false
 	_is_on_platform = true # ← locks physics permanently
-	velocity = Vector2.ZERO
+
+	tecla.visible = false
+	letter_label.visible = false
+	termometer.visible = false
+	termometer_red.visible = false
+	temp_bar.visible = false
+
+	_was_frozen = temperature <= GameHandler.freezing_temp
 	GameHandler.notify_penguin_arrived(_was_frozen)
+
+	velocity = Vector2.ZERO
 	move_and_slide() # one last slide to flush velocity
 
 	if _was_frozen:
+		var score = 2 if GameHandler._first_penguin else 1
+		label.text = "+" + str(score)
+		GameHandler._add_score(score)
+		if not GameHandler._first_penguin:
+			GameHandler._first_penguin = true
+		animation_player.play("add_score")
 		icecube.visible = true
 		animated_sprite_2d.animation = "idle"
 		var num_frames = animated_sprite_2d.sprite_frames.get_frame_count("idle")
@@ -305,12 +321,12 @@ func _refresh_bar() -> void:
 
 
 func _check_death() -> void:
-	if _is_dead:
+	if _is_dead or _is_going_to_platform:
 		return
+
 	if temperature >= max_temp:
 		_is_dead = true
 		_is_idle = false
-		_is_going_to_platform = false
 		animated_sprite_2d.stop()
 		dir_timer.stop()
 		temp_timer.stop()

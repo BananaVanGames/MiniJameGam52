@@ -27,6 +27,11 @@ SceneLoader="*res://autoloads/scene_loader.gd"
 GameHandler="*res://autoloads/game_handler.gd"
 LevelData="*res://autoloads/level_data.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/stretch/mode="canvas_items"
