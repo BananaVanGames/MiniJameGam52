@@ -69,10 +69,11 @@ clip_children = 1
 script = ExtResource("1_abfs3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(53.5, -106)
 sprite_frames = SubResource("SpriteFrames_2j6re")
 frame = 15
+offset = Vector2(55.9, -121.43)
 
 [node name="AntorchaOl" type="Sprite2D" parent="."]
-position = Vector2(0.5, 16)
+position = Vector2(0, 1)
 texture = ExtResource("5_ugr48")
+offset = Vector2(0, 13.255)

@@ -14,7 +14,12 @@
 y_sort_enabled = true
 script = ExtResource("1_1565f")
 
+[node name="PenguinSpawner" parent="." instance=ExtResource("4_ogdhh")]
+y_sort_enabled = true
+position = Vector2(-4, -34)
+
 [node name="Background" type="Control" parent="."]
+y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 578.0
@@ -23,6 +28,7 @@ offset_right = 618.0
 offset_bottom = 349.0
 
 [node name="Background_1" parent="Background" instance=ExtResource("2_hjv22")]
+y_sort_enabled = true
 layout_mode = 1
 offset_left = -574.0
 offset_top = -300.0
@@ -32,9 +38,6 @@ offset_bottom = 308.0
 [node name="Platform" parent="." instance=ExtResource("3_1565f")]
 z_index = -1
 position = Vector2(233, 339)
-
-[node name="PenguinSpawner" parent="." instance=ExtResource("4_ogdhh")]
-y_sort_enabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_a2xg8")
@@ -54,3 +57,5 @@ visible = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(327, 298)
+
+[editable path="Background/Background_1"]

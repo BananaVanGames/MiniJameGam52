@@ -52,27 +52,33 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_2qg8k")
 
 [node name="Torch" parent="." instance=ExtResource("2_uj5s0")]
+y_sort_enabled = true
 position = Vector2(369, 627)
 rotation = -0.286234
 
 [node name="Torch2" parent="." instance=ExtResource("2_uj5s0")]
+y_sort_enabled = true
 position = Vector2(745, 623)
 scale = Vector2(-1, 1)
 
 [node name="Torch3" parent="." instance=ExtResource("2_uj5s0")]
+y_sort_enabled = true
 position = Vector2(105, 616)
 rotation = -0.07853982
 
 [node name="Torch4" parent="." instance=ExtResource("2_uj5s0")]
+y_sort_enabled = true
 position = Vector2(1043, 644)
 
 [node name="Umbrela" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(782, 263)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_xlr7x")
 offset = Vector2(20.515, -164.82)
 
 [node name="Umbrela2" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(75, 156)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_xlr7x")

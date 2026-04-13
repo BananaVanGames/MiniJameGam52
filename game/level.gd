@@ -47,6 +47,22 @@ func on_intro_finished() -> void:
 	audio_stream_player.play()
 	whistle.start_global_timer()
 
+	var bostezo_timer = Timer.new()
+	add_child(bostezo_timer)
+	var delay = randf_range(2, 7)
+	bostezo_timer.start(delay)
+
+	var bostezo_player = AudioStreamPlayer.new()
+	add_child(bostezo_player)
+	bostezo_player.stream = load("uid://bmy0ghoar7h5d")
+
+	bostezo_timer.timeout.connect(func():
+			bostezo_player.play()
+			await bostezo_player.finished
+			bostezo_player.queue_free()
+			bostezo_timer.queue_free()
+	)
+
 
 func end_level() -> void:
 	whistle.stop_global_timer()
@@ -79,7 +95,6 @@ func _on_tutorial_finished() -> void:
 	intro.intro_finished.connect(on_intro_finished)
 	audio_stream_player.stream = LEVEL_INTRO_MUSIC
 	audio_stream_player.play()
-	
 
 
 func _on_whistle_blown() -> void:

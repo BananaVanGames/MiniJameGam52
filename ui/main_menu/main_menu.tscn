@@ -29,6 +29,7 @@ video_button = NodePath("Settings/Control/Video")
 audio_button = NodePath("Settings/Control2/Audio")
 
 [node name="Background_Menu" parent="." instance=ExtResource("3_u184e")]
+y_sort_enabled = true
 layout_mode = 1
 
 [node name="Menu" type="VBoxContainer" parent="."]
@@ -300,7 +301,8 @@ pivot_offset = Vector2(100, 50)
 text = "Back"
 
 [node name="MenuPenguin" parent="." instance=ExtResource("5_3c04x")]
-position = Vector2(375, 623)
+y_sort_enabled = true
+position = Vector2(296, 601)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

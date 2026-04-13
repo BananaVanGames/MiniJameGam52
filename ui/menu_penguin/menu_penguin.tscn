@@ -283,8 +283,8 @@ animations = [{
 script = ExtResource("1_5j71f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -39)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cimb6")
 animation = &"idle"
 frame_progress = 0.35949534
+offset = Vector2(0, -77.375)
